@@ -43,7 +43,6 @@ public class PanelLogeo extends JDialog  {
 	private ControlLogeo cl;
 	private JButton okButton;
 	private JButton cancelButton;
-	private JLabel lblNewLabel_1;
 
 	public PanelLogeo() {
 		setUndecorated(true);
@@ -63,7 +62,7 @@ public class PanelLogeo extends JDialog  {
 		setResizable(false);
 		setBounds(100, 100, 450, 306);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBackground(new Color(128, 0, 0));
+		contentPanel.setBackground(new Color(139, 0, 0));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.NORTH);
 		{
@@ -88,17 +87,13 @@ public class PanelLogeo extends JDialog  {
 		lblNewLabel = new JLabel("");
 		
 		lblimagew = new JLabel("");
-		lblimagew.setIcon(new ImageIcon("/Users/Cosijopii/Dropbox/Eclipse/Ex3AP/Iconos/contact_card-128.png"));
+		lblimagew.setIcon(new ImageIcon("/Users/Cosijopii/uHorarios/uHorarios-src/icons/calendar.png"));
 		
 		lblE = new JLabel("u");
 		lblE.setOpaque(true);
 		lblE.setBounds(new Rectangle(30, 30, 30, 30));
 		lblE.setForeground(Color.RED);
 		lblE.setFont(new Font("Monotype Corsiva", Font.ITALIC, 54));
-		
-		lblNewLabel_1 = new JLabel("Profesores");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Dialog", Font.ITALIC, 14));
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -110,16 +105,12 @@ public class PanelLogeo extends JDialog  {
 								.addContainerGap()
 								.addComponent(separator, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE))
 							.addGroup(gl_contentPanel.createSequentialGroup()
-								.addGap(22)
+								.addGap(23)
 								.addComponent(lblimagew)
-								.addGap(35)
+								.addPreferredGap(ComponentPlacement.RELATED)
 								.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
 									.addGroup(gl_contentPanel.createSequentialGroup()
-										.addComponent(lblE, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(lbltitle))
-									.addComponent(lblNewLabel_1)
-									.addGroup(gl_contentPanel.createSequentialGroup()
+										.addGap(35)
 										.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
 											.addGroup(gl_contentPanel.createSequentialGroup()
 												.addComponent(lbluser)
@@ -129,31 +120,35 @@ public class PanelLogeo extends JDialog  {
 												.addGap(18)))
 										.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 											.addComponent(user, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
-											.addComponent(password)))))))
-					.addContainerGap(15, Short.MAX_VALUE))
+											.addComponent(password)))
+									.addGroup(gl_contentPanel.createSequentialGroup()
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(lblE, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(lbltitle)
+										.addGap(2))))))
+					.addContainerGap(14, Short.MAX_VALUE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel)
-					.addGap(23)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addComponent(lblNewLabel)
+							.addGap(24)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lbltitle, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblE, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-							.addGap(44)
+							.addGap(74)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(user, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lbluser))
-							.addGap(14)
-							.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblpass)
-								.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(lbluser)))
 						.addComponent(lblimagew))
+					.addGap(14)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblpass)
+						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(32)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(17))
@@ -254,10 +249,6 @@ public class PanelLogeo extends JDialog  {
 
 	public JButton getCancelButton() {
 		return cancelButton;
-	}
-
-	public JLabel getLblNewLabel_1() {
-		return lblNewLabel_1;
 	}
 
 	
