@@ -1,5 +1,7 @@
 package com.uHorarios.vistas;
 
+import java.util.ArrayList;
+
 public class MainTest {
 
 	public MainTest() {
@@ -8,7 +10,10 @@ public class MainTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-	}
+		ArrayList<Object> x=new ArrayList<Object>();
+		x.add(new Object());
+		System.out.println(x);
+		
+		}
 
 }
