@@ -8,18 +8,16 @@ import javax.swing.JMenuBar;
 import java.awt.Color;
 import javax.swing.JPanel;
 
-import java.awt.BorderLayout;
+
 
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import java.awt.Cursor;
-import java.util.Calendar;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ImageIcon;
 public class PanelContenedorMenuPrincipal {
@@ -44,7 +42,7 @@ public class PanelContenedorMenuPrincipal {
 	public PanelContenedorMenuPrincipal() {
 
 		initialize();
-		threadActividades();
+		
 		
 	}
 
@@ -52,34 +50,8 @@ public class PanelContenedorMenuPrincipal {
 	 * Initialize the contents of the frame.
 	 */
 	
-	@SuppressWarnings("unused")
-	private void threadActividades(){
-		Thread clock = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				String minute, second,hour, ampm;
-				while (true) {
-					if(Calendar.getInstance().get(Calendar.HOUR)==0){
-						hour="12";
-					}else{
-					hour=(Calendar.getInstance().get(Calendar.HOUR) < 10) ? "0"+ Integer.toString(Calendar.getInstance().get(
-							Calendar.HOUR)): Integer.toString(Calendar.getInstance().get(Calendar.HOUR));
-					}
-					minute=(Calendar.getInstance().get(Calendar.MINUTE) < 10) ? "0"+ Integer.toString(Calendar.getInstance().get(
-							Calendar.MINUTE)): Integer.toString(Calendar.getInstance().get(Calendar.MINUTE));
-					second=(Calendar.getInstance().get(Calendar.SECOND) < 10) ? "0"+Integer.toString(Calendar.getInstance().get(
-							Calendar.SECOND)):Integer.toString(Calendar.getInstance().get( Calendar.SECOND));
-					ampm=(Calendar.getInstance().get(Calendar.AM_PM) == 0) ? "AM":"PM"; 
-				//	lblhora.setText(hour+ ":" + minute + ":" + second + " " + ampm);
-					minute = "";
-					second = "";
-					ampm="";
-				}
-			}
-		});
-	
-	}
-	private void initialize() {
+
+		private void initialize() {
 		try {
 			JFrame.setDefaultLookAndFeelDecorated(true);
 			JDialog.setDefaultLookAndFeelDecorated(true);
