@@ -1,4 +1,4 @@
-package com.Unistmo.uHorarios.vistas;
+package com.Unistmo.uHorarios.Modulos.MenuPrincipal;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -20,7 +20,7 @@ import java.awt.Color;
 import javax.swing.Box;
 import javax.swing.JSeparator;
 
-import com.Unistmo.uHorarios.Controles.ControlLogeo;
+
 
 import java.awt.Component;
 import java.awt.Font;

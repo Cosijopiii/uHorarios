@@ -1,4 +1,4 @@
-package com.Unistmo.uHorarios.vistas;
+package com.Unistmo.uHorarios.Modulos.MenuPrincipal;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;

@@ -1,11 +1,9 @@
-package com.Unistmo.uHorarios.Controles;
+package com.Unistmo.uHorarios.Modulos.MenuPrincipal;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
-
-import com.Unistmo.uHorarios.vistas.PanelLogeo;
 
 
 public class ControlLogeo implements ActionListener {

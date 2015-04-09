@@ -1,4 +1,4 @@
-package com.Unistmo.uHorarios.vistas;
+package com.Unistmo.uHorarios.Modulos.Materias;
 
 import java.awt.EventQueue;
 
