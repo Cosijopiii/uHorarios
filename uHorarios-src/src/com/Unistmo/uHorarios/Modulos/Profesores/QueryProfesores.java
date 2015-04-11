@@ -10,13 +10,9 @@ import com.Unistmo.uHorarios.*;
 public class QueryProfesores extends ConectorToDB{
 	protected SimpleDateFormat to = new SimpleDateFormat("yyyy-MM-dd");
 	protected QueryProfesores(){
-	    	
-	 
 	}
-	
 	protected boolean Insert_Profesor(String nombre,String foto,String correo,int nCubo,
 			String telefono, Date fNacimiento,String id,int edificio, String carrera ){
-		
 		try {
 			CallableStatement cs = getConexion().prepareCall("{call Insert_Profesor(?,?,?,?,?,?,?,?,?)}");
 			cs.setString(1, id);
@@ -31,17 +27,14 @@ public class QueryProfesores extends ConectorToDB{
 			cs.execute();
 			cs.close();
 			return true;
-
 		} catch (SQLException se) {
 			// se.printStackTrace();
 			JOptionPane.showMessageDialog(null,
 					"error al dar de alta profesores " + se);
 		}
-		return false;
-
-		
+		return false;	
 	}
-	
-	
 
+	
+	
 }

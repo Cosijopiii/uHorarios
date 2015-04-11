@@ -1,6 +1,7 @@
 package com.Unistmo.uHorarios.Modulos.Profesores;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -60,7 +61,6 @@ ListSelectionListener,RecursosConstantes {
 		if (e.getSource() == comp.getTxtTelefono())
 			comp.getTxtTelefono().setForeground((!comp.getTxtTelefono().getText().matches(PATTERN_TELEFONO)) ? Color.RED: Color.BLACK);
 	}
-
 	public void AccionFoto() {
 		int opc = jf.showOpenDialog(null);
 		BufferedImage img = null;
@@ -86,10 +86,8 @@ ListSelectionListener,RecursosConstantes {
 	}
 
 	public void AccionGuardar(){
-		if (validarGuardar()) {
-			
-			String nom=RecursosConstantes.ToUPPER(comp.getTxtNombre().getText());
-				
+		if (validarGuardar()) {	
+			String nom=RecursosConstantes.ToUPPER(comp.getTxtNombre().getText());				
 			Insert_Profesor(nom, rutaFoto, comp.getTxtCorreo().getText(),
 					Integer.parseInt(comp.getCmbCubiculo().getSelectedItem()
 							.toString()), comp.getTxtTelefono().getText(),
@@ -97,10 +95,12 @@ ListSelectionListener,RecursosConstantes {
 							.getText(), Integer.parseInt(comp.getCmbEdificio()
 							.getSelectedItem().toString()), comp
 							.getCmbCarreras().getSelectedItem().toString());
-
 				} else {
 					SoundError();
-					JOptionPane.showMessageDialog(null,MENSAJE_JOPTIONPANE_ERROR_GUARDAR[0],MENSAJE_JOPTIONPANE_ERROR_GUARDAR[1], JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null,
+							MENSAJE_JOPTIONPANE_ERROR_GUARDAR[0],
+							MENSAJE_JOPTIONPANE_ERROR_GUARDAR[1],
+							JOptionPane.ERROR_MESSAGE);
 					seq.stop();
 				}
 	}
@@ -118,28 +118,29 @@ ListSelectionListener,RecursosConstantes {
 				| MidiUnavailableException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	
+	}	
 	public boolean validarGuardar(){	
 		boolean validaciones [] =new boolean[5];
 		for (int i = 0; i < validaciones.length; i++)
-			validaciones[i]=true;
-			validaciones[0]=(comp.getTxtClave().getForeground().equals(Color.red)? false :true);
-			validaciones[1]=(comp.getTxtNombre().getForeground().equals(Color.red)? false :true);
-			validaciones[2]=(comp.getTxtCorreo().getForeground().equals(Color.red)? false :true);
-			validaciones[3]=(comp.getTxtTelefono().getForeground().equals(Color.red)? false :true);
-			validaciones[4]=(comp.getDateChooser().getDate()==null ? false :true );
+			validaciones[i]=true;		
+		
+		validaciones[0]=comp.getTxtClave().getForeground().equals(Color.red)? false :true);
+		validaciones[1]=comp.getTxtCorreo().getForeground().equals(Color.red)? false :true);
+	    validaciones[4]=(comp.getDateChooser().getDate()==null ? false :true );
+		
+		   
 		for (int i = 0; i < validaciones.length; i++)
-			if(validaciones[i]==false)
-				return false;		
+		   if(validaciones[i]==false)
+			  return false;		
 		return true;
 	}
 	@Override
 	public void keyTyped(KeyEvent e) {}
 	@Override
-	public void valueChanged(ListSelectionEvent e) {}
+	public void valueChanged(ListSelectionEvent e) {
+		
+		System.out.println(e.getSource());
+	}
 	@Override
 	public void keyPressed(KeyEvent e) {}
-
 }

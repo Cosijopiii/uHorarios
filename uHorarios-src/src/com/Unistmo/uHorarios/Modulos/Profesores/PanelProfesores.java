@@ -25,6 +25,8 @@ import com.Unistmo.uHorarios.RecursosConstantes;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.SystemColor;
+import javax.swing.AbstractListModel;
+import javax.swing.ListSelectionModel;
 public class PanelProfesores extends JDialog implements RecursosConstantes{
 	/**
 	 * 
@@ -266,9 +268,11 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 		);
 		
 		listProfesores = new JList();
+		listProfesores.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listProfesores.setValueIsAdjusting(true);
 		listProfesores.setOpaque(false);
 		scrollPaneProfesores.setViewportView(listProfesores);
+		
 		getContentPane().setLayout(groupLayout);
 		this.btnGuardar.addActionListener(listener);
 		this.btnNuevo.addActionListener(listener);
