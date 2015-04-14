@@ -1,20 +1,23 @@
 package com.Unistmo.uHorarios.Modulos.Profesores;
 
+import java.util.*;
 import javax.swing.AbstractListModel;
 
+@SuppressWarnings({ "serial", "rawtypes" })
 public class ModeluHorariosList extends AbstractListModel{
+	
+	private ArrayList<Profesor> profesores= new ArrayList<Profesor>();
 
 	@Override
 	public Object getElementAt(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		 Profesor p = profesores.get(index);
+		   return p.getNombre();
 	}
 	@Override
-	public int getSize() {
-		// TODO Auto-generated method stub
-		return 0;
-	
+	public int getSize() {	
+		return profesores.size();
 	}
+	
 	
 
 }

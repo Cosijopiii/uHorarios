@@ -156,11 +156,12 @@ ListSelectionListener,RecursosConstantes {
 		for (int i = 0; i < validaciones.length; i++)
 			validaciones[i]=true;		
 		
-		validaciones[0]=comp.getTxtClave().getForeground().equals(Color.red)? false :true);
-		validaciones[1]=comp.getTxtCorreo().getForeground().equals(Color.red)? false :true);
-	    validaciones[4]=(comp.getDateChooser().getDate()==null ? false :true );
+		validaciones[0]=comp.getTxtClave().getForeground().equals(Color.red)? false :true;
+		validaciones[1]=comp.getTxtCorreo().getForeground().equals(Color.red)? false :true;
+	    validaciones[2]=comp.getDateChooser().getDate()==null ? false :true;
+	    validaciones[3]=comp.getTxtNombre().getForeground().equals(Color.red)? false :true;
+		validaciones[4]=comp.getTxtTelefono().getForeground().equals(Color.red) ?false :true;
 		
-		   
 		for (int i = 0; i < validaciones.length; i++)
 		   if(validaciones[i]==false)
 			  return false;		
