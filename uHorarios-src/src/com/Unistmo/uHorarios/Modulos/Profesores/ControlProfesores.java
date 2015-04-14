@@ -71,7 +71,6 @@ ListSelectionListener,Patrones {
 	
 	
 	
-	
 	public boolean validarGuardar(){
 		boolean validaciones [] =new boolean[5];
 		for (int i = 0; i < validaciones.length; i++)
