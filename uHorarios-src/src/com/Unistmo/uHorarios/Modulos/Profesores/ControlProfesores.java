@@ -1,7 +1,6 @@
 package com.Unistmo.uHorarios.Modulos.Profesores;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -61,37 +60,7 @@ ListSelectionListener,RecursosConstantes {
 		if (e.getSource() == comp.getTxtTelefono())
 			comp.getTxtTelefono().setForeground((!comp.getTxtTelefono().getText().matches(PATTERN_TELEFONO)) ? Color.RED: Color.BLACK);
 	}
-<<<<<<< HEAD
-	@Override
-	public void keyTyped(KeyEvent e) {}
-	@Override
-	public void valueChanged(ListSelectionEvent e) {}
-	@Override
-	public void keyPressed(KeyEvent e) {}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public boolean validarGuardar(){
-		boolean validaciones [] =new boolean[5];
-		for (int i = 0; i < validaciones.length; i++)
-			validaciones[i]=true;
-		validaciones[0]=(comp.getTxtClave().getForeground().equals(Color.red)? false :true);
-		validaciones[1]=(comp.getTxtNombre().getForeground().equals(Color.red)? false :true);
-		validaciones[2]=(comp.getTxtCorreo().getForeground().equals(Color.red)? false :true);
-		validaciones[3]=(comp.getTxtTelefono().getForeground().equals(Color.red)? false :true);
-		validaciones[4]=(comp.getDateChooser().getDate()==null ? false :true );
-		for (int i = 0; i < validaciones.length; i++)
-			if(validaciones[i]==false)
-				return false;		
-		return true;
-=======
+
 	public void AccionFoto() {
 		int opc = jf.showOpenDialog(null);
 		BufferedImage img = null;
@@ -134,7 +103,7 @@ ListSelectionListener,RecursosConstantes {
 							JOptionPane.ERROR_MESSAGE);
 					seq.stop();
 				}
->>>>>>> origin/master
+
 	}
 	public void SoundError() {
 		if (sound == null) {
@@ -168,12 +137,15 @@ ListSelectionListener,RecursosConstantes {
 		return true;
 	}
 	@Override
-	public void keyTyped(KeyEvent e) {}
-	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		
 		System.out.println(e.getSource());
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
