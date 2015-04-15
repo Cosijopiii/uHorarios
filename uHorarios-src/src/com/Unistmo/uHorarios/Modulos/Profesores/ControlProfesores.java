@@ -58,10 +58,7 @@ ListSelectionListener,RecursosConstantes {
 		if (e.getSource() == comp.getTxtTelefono())
 			comp.getTxtTelefono().setForeground((!comp.getTxtTelefono().getText().matches(PATTERN_TELEFONO)) ? Color.RED: Color.BLACK);
 	}
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 	public void AccionFoto() {
 		int opc = jf.showOpenDialog(null);
 		BufferedImage img = null;

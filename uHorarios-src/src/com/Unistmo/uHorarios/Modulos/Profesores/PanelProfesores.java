@@ -25,7 +25,6 @@ import com.Unistmo.uHorarios.RecursosConstantes;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.SystemColor;
-import javax.swing.AbstractListModel;
 import javax.swing.ListSelectionModel;
 public class PanelProfesores extends JDialog implements RecursosConstantes{
 	/**
@@ -56,6 +55,14 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 	private JComboBox<?> cmbEdificio;
 	private JLabel lblCarreraALa;
 	private JComboBox<?> cmbCarreras;
+	/**
+	 * @return the btnEliminar
+	 */
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	private JButton btnEliminar;
 	/**
 	 * Launch the application.
 	 */
@@ -140,7 +147,7 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setForeground(Color.BLACK);
-		btnGuardar.setFont(new Font("SansSerif", Font.PLAIN, 19));
+		btnGuardar.setFont(new Font("SansSerif", Font.PLAIN, 17));
 	
 		cmbCubiculo = new JComboBox<Object>();
 		cmbCubiculo.setModel(new DefaultComboBoxModel(CUBICULOS));
@@ -159,6 +166,10 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 		
 		cmbCarreras = new JComboBox();
 		cmbCarreras.setModel(new DefaultComboBoxModel(CARRERAS));
+		
+	     btnEliminar = new JButton("Eliminar");
+		btnEliminar.setForeground(Color.BLACK);
+		btnEliminar.setFont(new Font("SansSerif", Font.PLAIN, 17));
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -175,10 +186,10 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblCarreraALa)
 									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(cmbCarreras, 0, 147, Short.MAX_VALUE))
+									.addComponent(cmbCarreras, 0, 136, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(36)
-									.addComponent(lblProfesores, GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
+									.addComponent(lblProfesores, GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE))
 								.addGroup(groupLayout.createSequentialGroup()
 									.addComponent(lblNombre)
 									.addGap(18)
@@ -200,7 +211,7 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 										.addGroup(groupLayout.createSequentialGroup()
 											.addComponent(lblTelefono, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 											.addPreferredGap(ComponentPlacement.RELATED)
-											.addComponent(txtTelefono, GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
+											.addComponent(txtTelefono, GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
 										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 											.addGroup(groupLayout.createSequentialGroup()
 												.addComponent(lblEdificio)
@@ -215,7 +226,9 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addComponent(btnAgregarFoto)
 								.addComponent(btnNuevo, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
+							.addGap(74)
+							.addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
 							.addComponent(btnGuardar, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)))
 					.addGap(21))
 		);
@@ -259,12 +272,13 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 							.addComponent(lblFoto, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(btnAgregarFoto)))
-					.addPreferredGap(ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 204, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addComponent(btnGuardar, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNuevo, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnNuevo, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
-				.addComponent(scrollPaneProfesores, GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+				.addComponent(scrollPaneProfesores, GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
 		);
 		
 		listProfesores = new JList();
@@ -282,7 +296,7 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 		this.txtTelefono.addKeyListener(listener);
 		this.txtNombre.addKeyListener(listener);
 		this.listProfesores.addListSelectionListener(listener);
-		
+	
 	}
 
 	public static long getSerialversionuid() {
