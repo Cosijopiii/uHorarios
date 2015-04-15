@@ -58,6 +58,10 @@ ListSelectionListener,RecursosConstantes {
 		if (e.getSource() == comp.getTxtTelefono())
 			comp.getTxtTelefono().setForeground((!comp.getTxtTelefono().getText().matches(PATTERN_TELEFONO)) ? Color.RED: Color.BLACK);
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 	public void AccionFoto() {
 		int opc = jf.showOpenDialog(null);
 		BufferedImage img = null;
@@ -134,12 +138,15 @@ ListSelectionListener,RecursosConstantes {
 		return true;
 	}
 	@Override
-	public void keyTyped(KeyEvent e) {}
-	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		
 		System.out.println(e.getSource());
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
