@@ -1,13 +1,18 @@
 package com.Unistmo.uHorarios.Modulos.Profesores;
 import java.sql.CallableStatement;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
 import com.Unistmo.uHorarios.*;
 public class QueryProfesores extends ConectorToDB{
+	protected ResultSet rs;
+	protected ArrayList<Profesor>profesor=new ArrayList<Profesor>();
 	protected SimpleDateFormat to = new SimpleDateFormat("yyyy-MM-dd");
 	protected QueryProfesores(){
 	}
@@ -34,7 +39,25 @@ public class QueryProfesores extends ConectorToDB{
 		}
 		return false;	
 	}
-
+	protected ArrayList<Profesor> Select_Profesor(){
+		
+		try {
+			//Profesor(String nombre,String foto,String correo,int nCubo,
+			//String telefono, Date fNacimiento,String id,int edificio, String carrera ){
+				
+			PreparedStatement ps = getConexion().prepareStatement("select * from Profesor");
+			rs=ps.executeQuery();
+			while(rs.next()){
+			//	profesor.add(new profesor()));
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
+		return null;
+	}
 	
 	
 }

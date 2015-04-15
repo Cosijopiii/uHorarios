@@ -16,10 +16,6 @@ public interface RecursosConstantes {
     public static final String MENSAJE_JOPTIONPANE_ERROR_GUARDAR []={"Por favor verifique los datos que introdujo","Error al tratar de guardar los datos"};
     public static final String MENSAJE_JOPTIONPANE_ERROR_IMAGEN []={"Por favor verifique que escojio una imagen correcta","Error al tratar de asignar imagen"};
  
-    
-    
-    
-    
     //Metodo que resive un Sring Y regresa el String modificado con las primeras letras en mayusculas
     public static String ToUPPER(String str){
     	StringBuilder sb=new StringBuilder();

@@ -1,6 +1,7 @@
 package com.Unistmo.uHorarios.Modulos.Profesores;
 
 import java.util.*;
+
 import javax.swing.AbstractListModel;
 
 @SuppressWarnings({ "serial", "rawtypes" })
@@ -18,6 +19,9 @@ public class ModeluHorariosList extends AbstractListModel{
 		return profesores.size();
 	}
 	
+	public void addElement(Object item){
+	
+	}
 	
 
 }

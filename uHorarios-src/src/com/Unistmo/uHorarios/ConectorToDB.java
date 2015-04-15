@@ -10,7 +10,8 @@ public class ConectorToDB {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(URL,USER,PASSWORD);
-		} catch (Exception e) {e.printStackTrace();}	
+		} catch (Exception e) {e.printStackTrace();
+    	}		
 	}
 	protected Connection getConexion() {
 	return	conn;
