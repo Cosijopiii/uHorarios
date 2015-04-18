@@ -69,6 +69,15 @@ public class Profesor {
 	public Profesor(String nombre,String foto,String correo,int nCubo,
 			String telefono, Date fNacimiento,String id,int edificio, String carrera ){
 		
+		this.nombre=nombre;
+		this.foto=foto;
+		this.correo=correo;
+		this.nCubo=nCubo;
+		this.telefono=telefono;
+		this.fNacimiento=fNacimiento;
+		this.id=id;
+		this.edificio=edificio;
+		this.carrera=carrera;
 	}
 
 	/**

@@ -6,13 +6,8 @@ import javax.swing.AbstractListModel;
 
 @SuppressWarnings({ "serial", "rawtypes" })
 public class ModeluHorariosList extends AbstractListModel{
-	private ArrayList<Profesor> profesores;
+	private ArrayList<Profesor>  profesores= new ArrayList<Profesor>();
 
-	public ModeluHorariosList(){
-		profesores= new ArrayList<Profesor>();
-	}
-	
-	
 	@Override
 	public Object getElementAt(int index) {
 		 Profesor p = profesores.get(index);
@@ -24,14 +19,32 @@ public class ModeluHorariosList extends AbstractListModel{
 	}
 	public void addElement(Object item){
 		profesores.add((Profesor) item);
-		this.fireIntervalAdded(this, getSize(),getSize()+1);
+	   	fireIntervalAdded(this, getSize(),getSize()+1);
 	}
-	public void removeElement(int index){
-		profesores.remove(index);
-		this.fireIntervalRemoved(this, getSize(), getSize()-1);
+	public void removeElement(int index) {
+		if (index != -1) {
+			profesores.remove(index);
+			if (index == 0) {
+				fireIntervalRemoved(this, getSize(), getSize());
+			} else {
+				fireIntervalRemoved(this, getSize(), getSize() - 1);
+			}
+		}
 	}
 	public Profesor getElementP(int index){
 		return profesores.get(index);
+	}
+	/**
+	 * @return the profesores
+	 */
+	public ArrayList<Profesor> getProfesores() {
+		return profesores;
+	}
+	/**
+	 * @param profesores the profesores to set
+	 */
+	public void setProfesores(ArrayList<Profesor> profesores) {
+		this.profesores = profesores;
 	}
 
 }
