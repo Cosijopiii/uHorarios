@@ -106,23 +106,19 @@ public class QueryProfesores extends ConectorToDB{
 			rs=ps.executeQuery();
 			while(rs.next()){
 				 p=new Profesor(rs.getString(2),rs.getString(6),rs.getString(3),rs.getInt(7),rs.getString(5),rs.getDate(4),rs.getString(1),rs.getInt(8),rs.getString(9));
-			}
-			
+			}		
 		} catch (Exception e) {
 		
 		}	
 		return p;
-		
 	}
-	
 	public int Buscar(Object i,Object[] t)
 	{
-		for (int j = 0; j < t.length; j++) {
+		for (int j = 0; j<t.length; j++) {
 			if(i.equals(t[j])){
 				return j;
 			}
 		}	
 		return -1;
 	}
-	
 }

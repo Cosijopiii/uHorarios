@@ -9,7 +9,7 @@ public interface RecursosConstantes {
 	public static final String PATTERN_TELEFONO="[0-9]{10}|[0-9]{13}";
 	public static final String PATTERN_NOMINA=" ";
 	public static final String PATTERN_CLAVE="[0-9]+";
-	public static final String CUBICULOS [] ={"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13","14", "15", "16", "17", "18", "19", "20","21","23","24","24","25","26","27","28","29","30"};
+	public static final String CUBICULOS [] ={"1", "2","3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13","14", "15", "16", "17", "18", "19", "20","21","23","24","24","25","26","27","28","29","30"};
 	public static final String EDIFICIOS [] ={"1", "2"};
 	public static final String CARRERAS [] ={"Lic. Informatica","Lic. Ciencias Empresariales","Lic. Administración Publica","Lic. Derecho"};
     public static final String PATH_SOUND_FALL="sonidos\\FALL_01.MID";
@@ -17,7 +17,8 @@ public interface RecursosConstantes {
     public static final String MENSAJE_JOPTIONPANE_ERROR_IMAGEN []={"Por favor verifique que escojio una imagen correcta","Error al tratar de asignar imagen"};
     public static final String MENSAJE_JOPTIONPANE_ERROR_PROFESOR_DUPLICADO[]={"Por favor utilize otro numero de nomina ya que la actual esta en uso","Numero de nomina ya existente"};
     public static final String MENSAJE_JOPTIONPANE_ALERTA_ELIMINAR[]={"Desea dar de baja del sistema al profesor(a)","Dar de baja profesor"};
-    
+    public static final String SEMESTRES []={"1","2","3","4","5","6","7","8","9","10",};
+  
     //Metodo que resive un Sring Y regresa el String modificado con las primeras letras en mayusculas
     public static String ToUPPER(String str){
     	StringBuilder sb=new StringBuilder();

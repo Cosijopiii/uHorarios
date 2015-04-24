@@ -17,9 +17,11 @@ public class ModeluHorariosList extends AbstractListModel{
 	public int getSize() {	
 		return profesores.size();
 	}
-	public void addElement(Object item){
-		profesores.add((Profesor) item);
-	   	fireIntervalAdded(this, getSize(),getSize()+1);
+	public void addElement(Profesor item){
+		if (!buscar(item.getId())) {
+			profesores.add(item);
+			fireIntervalAdded(this, getSize(), getSize() + 1);
+		}
 	}
 	public void removeElement(int index) {
 		if (index != -1) {
@@ -46,5 +48,19 @@ public class ModeluHorariosList extends AbstractListModel{
 	public void setProfesores(ArrayList<Profesor> profesores) {
 		this.profesores = profesores;
 	}
+	
+	public boolean buscar(String clv){
+		
+		for (Profesor profesor : profesores) {
+			if(profesor.getId().equals(clv)){	
+				return true;
+			}	
+		}
+		return false;
+	}
+	
+	
+	
+	
 
 }

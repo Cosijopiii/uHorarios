@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.text.ParseException;
 
 import com.Unistmo.uHorarios.*;
+
 import javax.imageio.ImageIO;
 import javax.sound.midi.InvalidMidiDataException;
 import javax.sound.midi.MidiSystem;
@@ -118,12 +119,12 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 		}
 	}
 	public void AccionFoto(String path) {
-		System.err.println(path);
+	
 		BufferedImage img = null;
 		Image dimg = null;
 		ImageIcon imgI = null;
 		if (path!=null) {
-			System.err.println("GO!");
+			
 			try {
 			
 				img = ImageIO.read(new File(path));
@@ -177,10 +178,24 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 			validaciones[i] = true;
 		validaciones[0] = comp.getTxtClave().getForeground().equals(Color.red) ? false: true;
 		validaciones[1] = comp.getTxtCorreo().getForeground().equals(Color.red) ? false: true;
-		validaciones[2] = comp.getDateChooser().getDate() == null ? false: true;
 		validaciones[3] = comp.getTxtNombre().getForeground().equals(Color.red) ? false: true;
 		validaciones[4] = comp.getTxtTelefono().getForeground().equals(Color.red) ? false : true;
+	
+		java.util.Date fecha =new java.util.Date();	
+		if (comp.getDateChooser().getDate() != null) {
+		Date one=Date.valueOf(to.format(comp.getDateChooser().getDate()));
+		Date two =Date.valueOf(to.format(fecha));
+			if (one.equals(two)||comp.getDateChooser().getDate().after(fecha)) {
+				
+				validaciones[2] =false;
+			}else
+				validaciones[2]=true;
+		}else{
+			validaciones[2]=false;
+		}
 		
+		fecha= null;
+	
 		for (int i = 0; i < validaciones.length; i++)
 			if (validaciones[i] == false)
 				return false;
@@ -202,7 +217,7 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 			comp.getTxtClave().setEnabled(false);
 		}
 		if (p != null && !comp.getTxtClave().isEnabled()) {
-			//elimar antes de actualizar
+			//elimar antes de actualizar		
 			comp.getListModel().removeElement(comp.getListProfesores().getSelectedIndex());
 			this.Update_Profesor(nom, rutaFoto, comp.getTxtCorreo().getText(),
 					Integer.parseInt(comp.getCmbCubiculo().getSelectedItem()
@@ -212,6 +227,7 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 							.parseInt(comp.getCmbEdificio().getSelectedItem()
 									.toString()), comp.getCmbCarreras()
 							.getSelectedItem().toString());
+		
 			AddToList(comp.getTxtClave().getText());
 			comp.getTxtClave().setEnabled(false);
 		}
@@ -221,6 +237,7 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 					MENSAJE_JOPTIONPANE_ERROR_PROFESOR_DUPLICADO[1],
 					JOptionPane.ERROR_MESSAGE);
 		}
+		
 	}
 	public void Eliminar(){	
 		if (!comp.getTxtClave().getText().isEmpty()) {
