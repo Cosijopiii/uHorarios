@@ -64,7 +64,7 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 		if (e.getSource() == comp.getTxtCorreo())
 			comp.getTxtCorreo().setForeground((!comp.getTxtCorreo().getText().matches(PATTERN_CORREO)) ? Color.RED: Color.BLACK);
 		if (e.getSource() == comp.getTxtClave())
-			comp.getTxtClave().setForeground((!comp.getTxtClave().getText().matches(PATTERN_CLAVE)) ? Color.RED: Color.BLACK);
+			comp.getTxtClave().setForeground((!comp.getTxtClave().getText().matches(PATTERN_NOMINA)) ? Color.RED: Color.BLACK);
 		if (e.getSource() == comp.getTxtTelefono())
 			comp.getTxtTelefono().setForeground((!comp.getTxtTelefono().getText().matches(PATTERN_TELEFONO)) ? Color.RED: Color.BLACK);
 	}
@@ -197,10 +197,11 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 		fecha= null;
 	
 		for (int i = 0; i < validaciones.length; i++)
-			if (validaciones[i] == false)
+			if (!validaciones[i])
 				return false;
 		return true;
 	}
+
 	public void Guardar_BD() {
 		String nom = RecursosConstantes.ToUPPER(comp.getTxtNombre().getText());
 		Profesor p = Select_Profesor(comp.getTxtClave().getText());
@@ -217,8 +218,9 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 			comp.getTxtClave().setEnabled(false);
 		}
 		if (p != null && !comp.getTxtClave().isEnabled()) {
-			//elimar antes de actualizar		
-			comp.getListModel().removeElement(comp.getListProfesores().getSelectedIndex());
+			// elimar antes de actualizar
+			comp.getListModel().removeElement(
+					comp.getListProfesores().getSelectedIndex());
 			this.Update_Profesor(nom, rutaFoto, comp.getTxtCorreo().getText(),
 					Integer.parseInt(comp.getCmbCubiculo().getSelectedItem()
 							.toString()), comp.getTxtTelefono().getText(),
@@ -227,7 +229,7 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 							.parseInt(comp.getCmbEdificio().getSelectedItem()
 									.toString()), comp.getCmbCarreras()
 							.getSelectedItem().toString());
-		
+
 			AddToList(comp.getTxtClave().getText());
 			comp.getTxtClave().setEnabled(false);
 		}
@@ -237,7 +239,7 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 					MENSAJE_JOPTIONPANE_ERROR_PROFESOR_DUPLICADO[1],
 					JOptionPane.ERROR_MESSAGE);
 		}
-		
+
 	}
 	public void Eliminar(){	
 		if (!comp.getTxtClave().getText().isEmpty()) {

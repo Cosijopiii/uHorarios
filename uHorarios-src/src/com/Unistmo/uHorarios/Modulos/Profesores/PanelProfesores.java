@@ -56,7 +56,7 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 	private JComboBox<?> cmbEdificio;
 	private JLabel lblCarreraALa;
 	private JComboBox<?> cmbCarreras;
-	private ModeluHorariosList listModel;
+	private ModeloListProfesores listModel;
 	private JButton btnEliminar;
 	private JLabel lblTituloProfesores;
 	/**
@@ -295,7 +295,7 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 				.addComponent(scrollPaneProfesores, GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
 		);
 		getContentPane().setLayout(groupLayout);
-		listModel =new ModeluHorariosList();
+		listModel =new ModeloListProfesores();
 		listProfesores = new JList();
 		listProfesores.setOpaque(false);
 		listProfesores.setFont(new Font("DengXian", Font.PLAIN, 14));
@@ -428,7 +428,7 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 	/**
 	 * @return the listModel
 	 */
-	public ModeluHorariosList getListModel() {
+	public ModeloListProfesores getListModel() {
 		return listModel;
 	}
 

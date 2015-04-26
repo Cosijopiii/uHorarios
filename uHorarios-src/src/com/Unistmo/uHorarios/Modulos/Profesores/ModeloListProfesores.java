@@ -5,7 +5,7 @@ import java.util.*;
 import javax.swing.AbstractListModel;
 
 @SuppressWarnings({ "serial", "rawtypes" })
-public class ModeluHorariosList extends AbstractListModel{
+public class ModeloListProfesores extends AbstractListModel{
 	private ArrayList<Profesor>  profesores= new ArrayList<Profesor>();
 
 	@Override
