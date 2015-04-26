@@ -212,6 +212,10 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 		cmbSemestresList.setFont(new Font("DengXian", Font.PLAIN, 16));
 		cmbSemestresList.setModel(new DefaultComboBoxModel(SEMESTRES));
 		panelheader.add(cmbSemestresList);
+		btnNuevo.addActionListener(listener);
+		btnEliminar.addActionListener(listener);
+		btnGuardar.addActionListener(listener);
+		cmbSemestresList.addActionListener(listener);
 		getContentPane().setLayout(groupLayout);
 			
 	}
