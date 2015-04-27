@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import com.Unistmo.uHorarios.*;
-public class QueryProfesores extends ConectorToDB{
+public class QueryProfesores extends ConnectionToDB{
 	/**
 	 * 
 	 */

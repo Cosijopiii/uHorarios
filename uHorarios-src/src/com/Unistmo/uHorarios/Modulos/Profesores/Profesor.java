@@ -52,9 +52,7 @@ public class Profesor {
 	/**
 	 * Constructor por defecto
 	 */
-	public Profesor(){
-		
-	}
+	public Profesor(){}
 	/**
 	 * @param nombre Nombre del profesor
 	 * @param foto  Ruta absoluta de la imagen del profesor
