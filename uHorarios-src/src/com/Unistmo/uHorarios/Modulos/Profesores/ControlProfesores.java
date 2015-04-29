@@ -81,10 +81,11 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 			comp.getTxtNombre().setText(p.getNombre());
 			comp.getTxtCorreo().setText(p.getCorreo());
 			comp.getTxtTelefono().setText(p.getTelefono());		
-			comp.getCmbCarreras().setSelectedIndex(Buscar(p.getCarrera(),CARRERAS));
-			comp.getCmbCubiculo().setSelectedIndex(Buscar(String.valueOf(p.getnCubo()),CUBICULOS));
-			comp.getCmbEdificio().setSelectedIndex(Buscar(String.valueOf(p.getEdificio()),EDIFICIOS));
+			comp.getCmbCarreras().setSelectedIndex(RecursosConstantes.Buscar(p.getCarrera(),CARRERAS));
+			comp.getCmbCubiculo().setSelectedIndex(RecursosConstantes.Buscar(String.valueOf(p.getnCubo()),CUBICULOS));
+			comp.getCmbEdificio().setSelectedIndex(RecursosConstantes.Buscar(String.valueOf(p.getEdificio()),EDIFICIOS));
 			comp.getTxtClave().setEnabled(false);
+			
 			try {
 				comp.getDateChooser().setDate(from.parse(from.format(p.getfNacimiento())));
 				AccionFoto(p.getFoto());
@@ -155,7 +156,7 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 			JOptionPane.showMessageDialog(null,MENSAJE_JOPTIONPANE_ERROR_GUARDAR[0],MENSAJE_JOPTIONPANE_ERROR_GUARDAR[1],JOptionPane.ERROR_MESSAGE);
 			seq.stop();
 		}
-
+ 
 	}
 	public void SoundError() {
 		if (sound == null) {
@@ -242,11 +243,11 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 
 	}
 	public void Eliminar(){	
-		if (!comp.getTxtClave().getText().isEmpty()) {
+		if (!comp.getTxtClave().getText().isEmpty() && !comp.getTxtClave().isEnabled()) {
 			int opcion = JOptionPane.showConfirmDialog(null,
-					MENSAJE_JOPTIONPANE_ALERTA_ELIMINAR[0]
-							+ comp.getTxtNombre().getText(),
-					MENSAJE_JOPTIONPANE_ALERTA_ELIMINAR[1],
+					MENSAJE_JOPTIONPANE_ALERTA_ELIMINAR_PROFESOR[0]
+							+" "+ comp.getTxtNombre().getText(),
+					MENSAJE_JOPTIONPANE_ALERTA_ELIMINAR_PROFESOR[1],
 					JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 			if (opcion == JOptionPane.YES_OPTION) {
 				int seleccion = comp.getListProfesores().getSelectedIndex();

@@ -112,13 +112,5 @@ public class QueryProfesores extends ConnectionToDB{
 		}	
 		return p;
 	}
-	public int Buscar(Object i,Object[] t)
-	{
-		for (int j = 0; j<t.length; j++) {
-			if(i.equals(t[j])){
-				return j;
-			}
-		}	
-		return -1;
-	}
+	
 }

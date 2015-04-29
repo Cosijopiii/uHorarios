@@ -8,6 +8,10 @@ import java.util.StringTokenizer;
  */
 public interface RecursosConstantes {
 	/**
+	 * Expresion regular patron nombre materia
+	 */
+	public static final String PATTERN_CODIGO_MATERIA="[0-9]+";
+	/**
 	 * Expresion regular Patron Nombre Profesor
 	 */
 	public static final String PATTERN_NOMBRE="(([A-Z]|[a-z])[a-zá-ú]+(([\\s]{1})|([\\s]{0})))+";
@@ -57,15 +61,24 @@ public interface RecursosConstantes {
 	 */
 	public static final String MENSAJE_JOPTIONPANE_ERROR_PROFESOR_DUPLICADO[]={"Por favor utilize otro numero de nomina ya que la actual esta en uso","Numero de nomina ya existente"};
 	/**
-	 * Mensaje de alerta al eliminar
+	 * Mensaje de alerta al eliminar profesor
 	 */
-	public static final String MENSAJE_JOPTIONPANE_ALERTA_ELIMINAR[]={"Desea dar de baja del sistema al profesor(a)","Dar de baja profesor"};
+	public static final String MENSAJE_JOPTIONPANE_ALERTA_ELIMINAR_PROFESOR[]={"Desea dar de baja del sistema al profesor(a)","Dar de baja profesor"};
     /**
      * Numero de semestres que tiene la universidad 
      */
-	public static final String SEMESTRES []={"1","2","3","4","5","6","7","8","9","10",};
-   
-    
+	public static final String SEMESTRES []={"1","2","3","4","5","6","7","8","9","10"};
+   /**
+    * Mensajes de error cuando la materia esta duplicada
+    */
+	public static final String MENSAJE_JOPTIONPANE_ERROR_MATERIA_DUPLICADA[]={"Por favor utilize otro codigo para la materia ya que la actual esta en uso","Materia ya existente"};
+
+	/**
+	 * Mensaje de alerta al eliminar materias
+	 */
+	public static final String MENSAJE_JOPTIONPANE_ALERTA_ELIMINAR_MATERIA[]={"Desea eliminar esta materia","Eliminar materia"};
+
+	
     /**
      * Metodo que resive un String y regresa el String modificado con las primeras letras en mayusculas
      * por ejemplo "hola sol", Salida "Hola Sol" 
@@ -82,4 +95,14 @@ public interface RecursosConstantes {
 				}	
     	return sb.toString().trim();
     }
+    
+    public static int Buscar(Object i,Object[] t)
+	{
+		for (int j = 0; j<t.length; j++) {
+			if(i.equals(t[j])){
+				return j;
+			}
+		}	
+		return -1;
+	}
 }

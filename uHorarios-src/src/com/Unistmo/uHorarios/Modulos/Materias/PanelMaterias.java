@@ -28,6 +28,7 @@ import javax.swing.border.LineBorder;
 
 import com.Unistmo.uHorarios.RecursosConstantes;
 import java.awt.Cursor;
+import javax.swing.ListSelectionModel;
 
 
 public class PanelMaterias extends JDialog implements RecursosConstantes {
@@ -49,7 +50,7 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 	private JLabel lblMaterias;
 	private JLabel lblSemestres;
 	private JComboBox<?> cmbSemestresList;
-
+	private ModeloListMaterias listModel;
 	/**
 	 * Launch the application.
 	 */
@@ -75,9 +76,10 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 		getContentPane().setFont(new Font("DengXian", Font.PLAIN, 18));
 		setResizable(false);
 		getContentPane().setBackground(new Color(128, 0, 0));
-		setBounds(100, 100, 771, 394);
-		ControlMaterias listener=new ControlMaterias();
+		setBounds(100, 100, 789, 394);
+		ControlMaterias listener=new ControlMaterias(this);
 		scrollPane = new JScrollPane();
+		scrollPane.setEnabled(false);
 		scrollPane.setBorder(null);
 		scrollPane.setBackground(new Color(255, 255, 255));
 		
@@ -124,16 +126,16 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 234, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE)
+					.addGap(33)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(78)
+							.addGap(28)
 							.addComponent(btnNuevo, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)
 							.addGap(67)
 							.addComponent(btnEliminar, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(54)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -150,10 +152,11 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 										.addComponent(txtNombre, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnGuardar, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 102, GroupLayout.PREFERRED_SIZE)))
 								.addComponent(lblProfesores))))
-					.addGap(37))
+					.addGap(765))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblProfesores, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
@@ -175,20 +178,21 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 						.addComponent(btnNuevo, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnGuardar, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
 					.addGap(41))
-				.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
 		);
-		
+		listModel =new ModeloListMaterias();
 		list = new JList<Object>();
-		list.setFont(new Font("DengXian", Font.PLAIN, 15));
+		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setFont(new Font("Dialog", Font.PLAIN, 13));
 		list.setValueIsAdjusting(true);
 		list.setOpaque(false);
+		list.setModel(listModel);
 		list.addListSelectionListener(listener);
-		scrollPane.setViewportView(list);
 		
+		
+		scrollPane.setViewportView(list);
 		panelheader = new JPanel();
 		scrollPane.setColumnHeaderView(panelheader);
 		panelheader.setLayout(new GridLayout(3, 1, 0, 0));
-		
 		lblMaterias = new JLabel("Materias");
 		lblMaterias.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblMaterias.setFont(new Font("DengXian", Font.PLAIN, 26));
@@ -196,8 +200,7 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 		lblMaterias.setOpaque(true);
 		lblMaterias.setBackground(new Color(184, 134, 11));
 		lblMaterias.setHorizontalAlignment(SwingConstants.CENTER);
-		panelheader.add(lblMaterias);
-		
+		panelheader.add(lblMaterias);	
 		lblSemestres = new JLabel("Semestre");
 		lblSemestres.setBorder(new LineBorder(new Color(0, 0, 0)));
 		lblSemestres.setOpaque(true);
@@ -206,17 +209,144 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 		lblSemestres.setFont(new Font("DengXian", Font.PLAIN, 18));
 		lblSemestres.setHorizontalAlignment(SwingConstants.CENTER);
 		panelheader.add(lblSemestres);
-		
 		cmbSemestresList = 	new JComboBox<Object>();
 		cmbSemestresList.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		cmbSemestresList.setFont(new Font("DengXian", Font.PLAIN, 16));
-		cmbSemestresList.setModel(new DefaultComboBoxModel(SEMESTRES));
+		cmbSemestresList.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Todos"}));
 		panelheader.add(cmbSemestresList);
 		btnNuevo.addActionListener(listener);
 		btnEliminar.addActionListener(listener);
 		btnGuardar.addActionListener(listener);
 		cmbSemestresList.addActionListener(listener);
+		listModel.setMaterias(listener.Select_all_Materias());
 		getContentPane().setLayout(groupLayout);
+		
 			
+	}
+
+	/**
+	 * @return the serialversionuid
+	 */
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	/**
+	 * @return the scrollPane
+	 */
+	public JScrollPane getScrollPane() {
+		return scrollPane;
+	}
+
+	/**
+	 * @return the list
+	 */
+	public JList<?> getList() {
+		return list;
+	}
+
+	/**
+	 * @return the lblNombre
+	 */
+	public JLabel getLblNombre() {
+		return lblNombre;
+	}
+
+	/**
+	 * @return the txtNombre
+	 */
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	/**
+	 * @return the lblProfesores
+	 */
+	public JLabel getLblProfesores() {
+		return lblProfesores;
+	}
+
+	/**
+	 * @return the lblCorreo
+	 */
+	public JLabel getLblCorreo() {
+		return lblCorreo;
+	}
+
+	/**
+	 * @return the txtClave
+	 */
+	public JTextField getTxtClave() {
+		return txtClave;
+	}
+
+	/**
+	 * @return the btnNuevo
+	 */
+	public JButton getBtnNuevo() {
+		return btnNuevo;
+	}
+
+	/**
+	 * @return the btnGuardar
+	 */
+	public JButton getBtnGuardar() {
+		return btnGuardar;
+	}
+
+	/**
+	 * @return the cmbSemestre
+	 */
+	public JComboBox<?> getCmbSemestre() {
+		return cmbSemestre;
+	}
+
+	/**
+	 * @return the lblClave
+	 */
+	public JLabel getLblClave() {
+		return lblClave;
+	}
+
+	/**
+	 * @return the btnEliminar
+	 */
+	public JButton getBtnEliminar() {
+		return btnEliminar;
+	}
+
+	/**
+	 * @return the panelheader
+	 */
+	public JPanel getPanelheader() {
+		return panelheader;
+	}
+
+	/**
+	 * @return the lblMaterias
+	 */
+	public JLabel getLblMaterias() {
+		return lblMaterias;
+	}
+
+	/**
+	 * @return the lblSemestres
+	 */
+	public JLabel getLblSemestres() {
+		return lblSemestres;
+	}
+
+	/**
+	 * @return the cmbSemestresList
+	 */
+	public JComboBox<?> getCmbSemestresList() {
+		return cmbSemestresList;
+	}
+
+	/**
+	 * @return the listModel
+	 */
+	public ModeloListMaterias getListModel() {
+		return listModel;
 	}
 }

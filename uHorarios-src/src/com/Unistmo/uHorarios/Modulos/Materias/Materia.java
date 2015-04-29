@@ -32,7 +32,7 @@ public class Materia {
 	 * @param semestre semestre al cual pertenece la meteria 
 	 * @param nombre nombre de la materia 
 	 */
-	public Materia(int id, int semestre, String nombre) {
+	public Materia(int id, String nombre, int semestre) {
 		this.id = id;
 		this.nombre = nombre;
 		this.semestre = semestre;

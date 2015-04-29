@@ -88,5 +88,13 @@ public class ModeloListMaterias extends AbstractListModel{
 		Materias = materias;
 	}
 	
+	public void removeAllelements(){
+		
+		for (int i = getSize()-1 ; i>=0; i--) {
+			removeElement(i);
+		}
+		
+	}
+	
 
 }
