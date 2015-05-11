@@ -16,7 +16,11 @@ public class RelacionPM {
 		}
 	
 	public String toString(){	
-		return "["+String.valueOf(idProfesor)+"]";//+"-"+String.valueOf(idMateria)+"]";//+"Np:"+nombreP+"Nm:"+nombreM;
+		
+	   	//return (idProfesor<10) ? "["+String.valueOf(idProfesor)+" "+"]" : "["+String.valueOf(idProfesor)+"]";
+		//return (idProfesor<10) ? "["+nombreP+" "+"]" : "["+nombreP+"]";
+		return nombreM+"->"+nombreP;
+		//return "["+String.valueOf(idProfesor)+"]";  //+"-"+String.valueOf(idMateria)+"]";//+"Np:"+nombreP+"Nm:"+nombreM;
 	}
 		
 		

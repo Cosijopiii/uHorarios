@@ -56,9 +56,11 @@ public class QueryMaterias extends ConnectionToDB {
 			ps.setInt(1, id);
 			rs=ps.executeQuery();
 			while(rs.next()){
+				
 				m=new Materia(rs.getInt(1),rs.getString(2),rs.getInt(3));
 			}
 		}catch (Exception e) {
+			e.printStackTrace();
 		 return null;	
 		}
 		return m;
@@ -82,27 +84,23 @@ public class QueryMaterias extends ConnectionToDB {
 	}
 	protected boolean Update_Materia(int idMateria,String NombreMateria,int idSemestre){		
 		try {
-
-			CallableStatement cs = getConexion().prepareCall("{Update_Materia(?,?,?)}");
+			CallableStatement cs = getConexion().prepareCall("{call Update_Materia(?,?,?)}");
 			cs.setInt(1, idMateria);
 			cs.setString(2, NombreMateria);
 			cs.setInt(3, idSemestre);
 			cs.execute();
 			cs.close();
-
+			
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
-
 		}
 
 	}
-	
-	
 	protected boolean Delete_Materia(int clv){
 		try {
-			CallableStatement cs = getConexion().prepareCall(
-					"{call delete_Materia(?)}");
+			CallableStatement cs = getConexion().prepareCall("{call delete_Materia(?)}");
 			cs.setInt(1, clv);
 			cs.execute();
 			cs.close();

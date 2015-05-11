@@ -35,12 +35,11 @@ public class ControlMaterias extends QueryMaterias implements ActionListener,Key
 					AddToList(Integer.parseInt(comp.getTxtClave().getText()));
 				}
 				if(m!=null && !comp.getTxtClave().isEnabled()){
-				
+					
 					comp.getListModel().removeElement(comp.getList().getSelectedIndex());
 					Update_Materia(Integer.parseInt(comp.getTxtClave().getText()),comp.getTxtNombre().getText(),Integer.parseInt(comp.getCmbSemestre().getSelectedItem().toString()));
 					AddToList(Integer.parseInt(comp.getTxtClave().getText()));
-					comp.getTxtNombre().setEnabled(false);
-					
+					comp.getTxtClave().setEnabled(false);			
 				}
 				if(m!=null && comp.getTxtClave().isEnabled()){
 					JOptionPane.showMessageDialog(null,
