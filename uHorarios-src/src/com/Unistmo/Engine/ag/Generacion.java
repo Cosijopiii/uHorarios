@@ -5,11 +5,11 @@ import java.util.Collections;
 
 public class Generacion {
 	private int nI;
-	private ArrayList<Individuo> iX = new ArrayList<>();
+	private ArrayList<Individuo> genInd = new ArrayList<>();
 	private int maxRamNum[] = new int[5];
 	private int r;
 	private Evaluacion eval;
-	private ArrayList<Individuo> gen=new ArrayList<Individuo>();
+
 	public Generacion() {
 
 	}
@@ -19,7 +19,7 @@ public class Generacion {
 		for (int l = 0; l < maxRamNum.length; l++)
 			maxRamNum[l] = 0;
 		generar();
-		eval=new Evaluacion();
+		eval = new Evaluacion();
 	}
 
 	public void generar() {
@@ -33,7 +33,7 @@ public class Generacion {
 						maxRamNum[r]++;
 
 						if (!(maxRamNum[r] > 3))
-							ind.getMat()[j][k] = DatosProfesoresMaterias.s1[r];//query de base de datoshnh
+							ind.getMat()[j][k] = DatosProfesoresMaterias.s1[r];
 						else {
 							k = k - 1;
 						}
@@ -48,7 +48,7 @@ public class Generacion {
 						}
 					}
 					if (j == 2) {
-						r =DatosProfesoresMaterias.GenerarR(0, 4);
+						r = DatosProfesoresMaterias.GenerarR(0, 4);
 						maxRamNum[r]++;
 						if (!(maxRamNum[r] > 3))
 							ind.getMat()[j][k] = DatosProfesoresMaterias.s3[r];
@@ -61,42 +61,50 @@ public class Generacion {
 					maxRamNum[l] = 0;
 			}
 
-			iX.add(ind);
+			genInd.add(ind);
 		}
 
 	}
-	public void generar(Generacion G){
-	
-		G=eval.evaluar(G);
-		Collections.sort(G.iX);
-		imprimirGen(G);
-		gen.addAll(G.iX.subList(0,(G.iX.size()-1)/2));
+
+	public Generacion generar(Generacion G) {
+
+		ArrayList<Individuo> gen = new ArrayList<Individuo>();
+		G = eval.fitness(G);
+		Collections.sort(G.genInd);
 		
-		
-		ArrayList<Individuo> d=new ArrayList<Individuo>();
-		
-	}	
-	public void imprimirGen(Generacion G){
-		
-		int c=1;
-		for (Individuo inv : G.getIx()) {
-			
+		//Collections.shuffle(G.genInd);
+		gen.addAll(G.genInd.subList(0, (G.genInd.size()) / 2));
+		ArrayList<Individuo> newGeneracion = new ArrayList<Individuo>();
+		for (int i = 0; i < gen.size(); i++)
+			newGeneracion.addAll(Cruza.CruzaAleatoria(gen.get(i),
+					gen.get(gen.size() - 1 - i)));
+		Generacion ng = new Generacion();
+		ng.setGenInd(newGeneracion);
+		return ng;
+
+	}
+
+	public void imprimirGen(Generacion G) {
+
+		int c = 1;
+		for (Individuo inv : G.getGenInd()) {
+
 			for (int j = 0; j < 15; j++) {
 				for (int i = 0; i < 3; i++) {
-					System.out.print(inv.getMat()[i][j].toString()+"|** ");	
+					System.out.print(inv.getMat()[i][j].toString() + "|** ");
 				}
-				
+
 				System.out.println("\n");
-				if(j==4||j==9||j==14)
-					System.out.println("<-fin dia-> "+(c++));
+				if (j == 4 || j == 9 || j == 14)
+					System.out.println("<-fin dia-> " + (c++));
 			}
-			c=1;
-			System.out.println("Aptitud: "+inv.getAptitud());
-			System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------");
-			
-			
+			c = 1;
+			System.out.println("Aptitud: " + inv.getAptitud());
+			System.out
+					.println("-------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 		}
-		}
+	}
 
 	public int[] getMaxRamNum() {
 		return maxRamNum;
@@ -106,12 +114,12 @@ public class Generacion {
 		this.maxRamNum = maxRamNum;
 	}
 
-	public ArrayList<Individuo> getIx() {
-		return iX;
+	public ArrayList<Individuo> getGenInd() {
+		return genInd;
 	}
 
-	public void setIx(ArrayList<Individuo> ix) {
-		iX = ix;
+	public void setGenInd(ArrayList<Individuo> ix) {
+		genInd = ix;
 	}
 
 }

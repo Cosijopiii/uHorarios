@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.Unistmo.uHorarios.ConnectionToDB;
+import com.Unistmo.ConnectionToDB;
 
 public class QueryMaterias extends ConnectionToDB {
 	protected ArrayList<Materia> materias=null;

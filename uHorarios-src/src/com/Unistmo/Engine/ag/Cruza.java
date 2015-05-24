@@ -1,8 +1,6 @@
 package com.Unistmo.Engine.ag;
 
 import java.util.ArrayList;
-import java.util.List;
-
 public class Cruza {
 
 	private Individuo g1 ;
