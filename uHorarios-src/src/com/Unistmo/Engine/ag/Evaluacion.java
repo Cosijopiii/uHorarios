@@ -31,7 +31,10 @@ public class Evaluacion {
 			}
 			fit = (1 / pena);
 			inv.setAptitud(fit);
+			
 		}
+		twoHours (G);
+		
 		return G;
 	}
 	public Generacion fitness(Generacion G) {
@@ -50,6 +53,7 @@ public class Evaluacion {
 			fit = (1 / pena);
 			inv.setAptitud(fit);
 		}
+		twoHours (G);
 		return G;
 	}
 
@@ -92,15 +96,15 @@ public class Evaluacion {
 			
 			for (int i = 0; i <temp.size()/HOURPERDAY; i++) {
 				
-				
+				/*
 				for (RelacionPM re : temp.subList(b_count, c_count)) {
 					
 					
-				}
-				RelacionPM [] arr=(RelacionPM[]) temp.subList(b_count, c_count).toArray();
+				}*/
+				Object[] arr= temp.subList(b_count, c_count).toArray();
 				for (int j = 1; j <arr.length-1;j++) {
-					if(arr[j+1].getIdMateria()==arr[j].getIdMateria() || arr[j-1].getIdMateria()==arr[j].getIdMateria()){
-						
+					if(!(((RelacionPM) arr[j+1]).getIdMateria()==((RelacionPM) arr[j]).getIdMateria() || ((RelacionPM) arr[j-1]).getIdMateria()==((RelacionPM) arr[j]).getIdMateria())){
+						pena=+1;
 						
 					}		
 				}
@@ -109,9 +113,11 @@ public class Evaluacion {
 				
 			}
 			
-			
+			fit = (1 / pena);
+			inv.setAptitud(inv.getAptitud()+fit);
 		}
-	return null;
+		
+	return G;
 	}
 
 	  	
