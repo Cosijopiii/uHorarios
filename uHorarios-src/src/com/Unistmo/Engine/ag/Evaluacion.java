@@ -31,10 +31,8 @@ public class Evaluacion {
 			}
 			fit = (1 / pena);
 			inv.setAptitud(fit);
-			
 		}
 		//twoHours (G);
-		
 		return G;
 	}
 	public Generacion fitness(Generacion G) {
@@ -94,27 +92,9 @@ public class Evaluacion {
 			
 			ArrayList<RelacionPM> temp=Cruza.MtoArray(inv);
 			
-			for (int i = 0; i <temp.size()/HOURPERDAY; i++) {
-				
-				/*
-				for (RelacionPM re : temp.subList(b_count, c_count)) {
-					
-					
-				}*/
-				Object[] arr= temp.subList(b_count, c_count).toArray();
-				for (int j = 1; j <arr.length-1;j++) {
-					if(!(((RelacionPM) arr[j+1]).getIdMateria()==((RelacionPM) arr[j]).getIdMateria() || ((RelacionPM) arr[j-1]).getIdMateria()==((RelacionPM) arr[j]).getIdMateria())){
-						pena=+1;
-						
-					}		
-				}
-				b_count=c_count+1;
-				c_count=b_count+HOURPERDAY-1;
-				
-			}
 			
-			fit = (1 / pena);
-			inv.setAptitud(inv.getAptitud()+fit);
+			
+			
 		}
 		
 	return G;
@@ -145,7 +125,7 @@ public class Evaluacion {
 	  	}	 	
 		/**
 		 * Metodo para calcular el numero de veces que se repite un elemento
-		 * Utilizado por el metodo hallarModa
+		 * Utilizado por el metodo hallarModa 
 		 * @param a
 	 	 * @param p
 	 	 * @param prim
