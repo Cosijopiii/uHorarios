@@ -218,9 +218,9 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 		btnEliminar.addActionListener(listener);
 		btnGuardar.addActionListener(listener);
 		cmbSemestresList.addActionListener(listener);
-		listModel.setMaterias(listener.Select_all_Materias());
-		getContentPane().setLayout(groupLayout);
 		
+		getContentPane().setLayout(groupLayout);
+		listModel.setMaterias(listener.Select_all_Materias());
 			
 	}
 

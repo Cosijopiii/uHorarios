@@ -33,7 +33,7 @@ public class Evaluacion {
 			inv.setAptitud(fit);
 			
 		}
-		twoHours (G);
+		//twoHours (G);
 		
 		return G;
 	}
@@ -53,7 +53,7 @@ public class Evaluacion {
 			fit = (1 / pena);
 			inv.setAptitud(fit);
 		}
-		twoHours (G);
+		//twoHours (G);
 		return G;
 	}
 

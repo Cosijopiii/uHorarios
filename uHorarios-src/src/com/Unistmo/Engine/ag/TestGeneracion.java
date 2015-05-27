@@ -56,8 +56,6 @@ public class TestGeneracion {
 					count++;
 			}
 			sum2=sum2/y.size();
-		
-			
 			System.out.println("agv gen "+i+" ="+sum2+" "+y.size()+" best= "+count);
 		}
 		

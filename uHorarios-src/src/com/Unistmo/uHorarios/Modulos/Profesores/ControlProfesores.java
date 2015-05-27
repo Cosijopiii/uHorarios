@@ -181,7 +181,6 @@ public class ControlProfesores extends QueryProfesores implements ActionListener
 		validaciones[1] = comp.getTxtCorreo().getForeground().equals(Color.red) ? false: true;
 		validaciones[3] = comp.getTxtNombre().getForeground().equals(Color.red) ? false: true;
 		validaciones[4] = comp.getTxtTelefono().getForeground().equals(Color.red) ? false : true;
-	
 		java.util.Date fecha =new java.util.Date();	
 		if (comp.getDateChooser().getDate() != null) {
 		Date one=Date.valueOf(to.format(comp.getDateChooser().getDate()));

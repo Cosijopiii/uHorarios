@@ -40,8 +40,7 @@ public class QueryMaterias extends ConnectionToDB {
 			PreparedStatement ps = getConexion().prepareStatement("select * from materia");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				materias.add(new Materia(rs.getInt(1), rs.getString(2), rs
-						.getInt(3)));
+				materias.add(new Materia(rs.getInt(1), rs.getString(2), rs.getInt(3)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -55,8 +54,7 @@ public class QueryMaterias extends ConnectionToDB {
 			PreparedStatement ps = getConexion().prepareStatement("select * from materia where idMateria=?");
 			ps.setInt(1, id);
 			rs=ps.executeQuery();
-			while(rs.next()){
-				
+			while(rs.next()){		
 				m=new Materia(rs.getInt(1),rs.getString(2),rs.getInt(3));
 			}
 		}catch (Exception e) {
