@@ -33,7 +33,9 @@ public class TestGeneracion {
 		temp=G;
 			
 		GenArray[0]=G.generar(temp);
+		GenArray[0].getGenInd().get(0).ImprimirInd(GenArray[0].getGenInd().get(0));
 		//Algoritmo genetico
+		/*
 		for (int i = 1; i < size; i++) {
 			
 			GenArray[i]=G.generar(GenArray[i-1]);
@@ -58,6 +60,7 @@ public class TestGeneracion {
 			sum2=sum2/y.size();
 			System.out.println("agv gen "+i+" ="+sum2+" "+y.size()+" best= "+count);
 		}
+		*/
 		
 	
 	}
