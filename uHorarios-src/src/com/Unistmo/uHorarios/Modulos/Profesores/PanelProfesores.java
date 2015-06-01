@@ -59,6 +59,8 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 	private ModeloListProfesores listModel;
 	private JButton btnEliminar;
 	private JLabel lblTituloProfesores;
+	private JLabel lblHoraEntrada;
+	private JComboBox<?> cmbHoraEntrada;
 	/**
 	 * Launch the application.
 	 */
@@ -176,6 +178,13 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 	     btnEliminar = new JButton("Eliminar");
 		btnEliminar.setForeground(Color.BLACK);
 		btnEliminar.setFont(new Font("SansSerif", Font.PLAIN, 17));
+		
+		lblHoraEntrada = new JLabel("Hora de entrada");
+		lblHoraEntrada.setForeground(new Color(255, 215, 0));
+		lblHoraEntrada.setFont(new Font("DengXian", Font.PLAIN, 16));
+		
+		cmbHoraEntrada = new JComboBox();
+		cmbHoraEntrada.setModel(new DefaultComboBoxModel(new String[] {"8:00 AM", "9:00 AM"}));
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -197,59 +206,63 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblCarreraALa)
+									.addGap(18)
+									.addComponent(cmbCarreras, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
 									.addComponent(btnAgregarFoto)
 									.addGap(30))
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-									.addGroup(groupLayout.createSequentialGroup()
-										.addComponent(lblCarreraALa)
-										.addGap(18)
-										.addComponent(cmbCarreras, GroupLayout.PREFERRED_SIZE, 229, GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-										.addComponent(lblFoto, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE))
-									.addGroup(groupLayout.createSequentialGroup()
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-											.addComponent(lblProfesores, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
-											.addGroup(groupLayout.createSequentialGroup()
-												.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-													.addGroup(groupLayout.createSequentialGroup()
-														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(lblHoraEntrada)
+									.addGap(27)
+									.addComponent(cmbHoraEntrada, 0, 72, Short.MAX_VALUE)
+									.addGap(362)
+									.addComponent(lblFoto, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(lblProfesores, GroupLayout.PREFERRED_SIZE, 180, GroupLayout.PREFERRED_SIZE)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addGroup(groupLayout.createSequentialGroup()
+													.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+														.addGroup(groupLayout.createSequentialGroup()
+															.addComponent(lblNDeCubiculo)
+															.addPreferredGap(ComponentPlacement.RELATED)
+															.addComponent(cmbCubiculo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+														.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+															.addComponent(dateChooser, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+															.addComponent(lblEdad, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+													.addGap(18)
+													.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+															.addComponent(lblClaveUnica)
 															.addGroup(groupLayout.createSequentialGroup()
-																.addComponent(lblNDeCubiculo)
-																.addPreferredGap(ComponentPlacement.RELATED)
-																.addComponent(cmbCubiculo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-															.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-																.addComponent(dateChooser, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-																.addComponent(lblEdad, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-														.addGap(18)
-														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-															.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-																.addGroup(groupLayout.createSequentialGroup()
-																	.addComponent(lblEdificio)
-																	.addPreferredGap(ComponentPlacement.UNRELATED)
-																	.addComponent(cmbEdificio, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-																.addComponent(lblClaveUnica))
-															.addComponent(lblTelefono))
-														.addPreferredGap(ComponentPlacement.RELATED)
-														.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-															.addComponent(txtTelefono, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-															.addComponent(txtClave, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
-													.addGroup(groupLayout.createSequentialGroup()
-														.addComponent(lblCorreo)
-														.addPreferredGap(ComponentPlacement.RELATED)
-														.addComponent(txtCorreo, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-													.addGroup(groupLayout.createSequentialGroup()
-														.addComponent(lblNombre)
-														.addGap(18)
-														.addComponent(txtNombre, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)))
-												.addGap(26)))
-										.addGap(225))))
+																.addComponent(lblEdificio)
+																.addPreferredGap(ComponentPlacement.UNRELATED, 19, Short.MAX_VALUE)
+																.addComponent(cmbEdificio, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+														.addComponent(lblTelefono))
+													.addPreferredGap(ComponentPlacement.RELATED)
+													.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+														.addComponent(txtTelefono, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+														.addComponent(txtClave, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)))
+												.addGroup(groupLayout.createSequentialGroup()
+													.addComponent(lblCorreo)
+													.addPreferredGap(ComponentPlacement.RELATED)
+													.addComponent(txtCorreo, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+												.addGroup(groupLayout.createSequentialGroup()
+													.addComponent(lblNombre)
+													.addGap(18)
+													.addComponent(txtNombre, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)))
+											.addGap(26)))
+									.addGap(225)))
 							.addGap(16))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblFoto, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblProfesores, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
 							.addGap(28)
@@ -277,22 +290,22 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 									.addComponent(lblEdificio)
 									.addComponent(cmbEdificio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 								.addComponent(dateChooser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-							.addGap(27)
+							.addGap(14)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblCarreraALa)
-								.addComponent(cmbCarreras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(61)
-							.addComponent(lblFoto, GroupLayout.PREFERRED_SIZE, 243, GroupLayout.PREFERRED_SIZE)
-							.addGap(21)
-							.addComponent(btnAgregarFoto)))
+								.addComponent(lblHoraEntrada, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+								.addComponent(cmbHoraEntrada, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+					.addGap(21)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnAgregarFoto)
+						.addComponent(lblCarreraALa)
+						.addComponent(cmbCarreras, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(54)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnNuevo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnEliminar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(btnGuardar, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap())
-				.addComponent(scrollPaneProfesores, GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE)
+				.addComponent(scrollPaneProfesores, GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
 		);
 		getContentPane().setLayout(groupLayout);
 		listModel =new ModeloListProfesores();
@@ -322,6 +335,27 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 		this.txtNombre.addKeyListener(listener);
 		this.btnEliminar.addActionListener(listener);
 		listModel.setProfesores(listener.Select_all_Profesor());
+	}
+
+	/**
+	 * @return the lblTituloProfesores
+	 */
+	public JLabel getLblTituloProfesores() {
+		return lblTituloProfesores;
+	}
+
+	/**
+	 * @return the lblHoraEntrada
+	 */
+	public JLabel getLblHoraEntrada() {
+		return lblHoraEntrada;
+	}
+
+	/**
+	 * @return the cmbHoraEntrada
+	 */
+	public JComboBox<?> getCmbHoraEntrada() {
+		return cmbHoraEntrada;
 	}
 
 	public static long getSerialversionuid() {
