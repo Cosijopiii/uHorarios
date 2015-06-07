@@ -1,7 +1,7 @@
 package com.Unistmo.Engine.ag;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+
+import java.util.TreeSet;
 
 public class Evaluacion {
 
@@ -103,7 +103,7 @@ public class Evaluacion {
 		for (Individuo inv : G.getGenInd()) {
 
 			RelacionPM temp[][] = inv.getMat();
-			countMaterias(temp);
+			subTabla(temp);
 
 			fit = (1 / pena);
 			inv.setAptitud(inv.getAptitud() + fit);
@@ -112,34 +112,57 @@ public class Evaluacion {
 		return G;
 	}
 
-	private RelacionPM[] countMaterias(RelacionPM temp[][]) {
+	private int subTabla(RelacionPM temp[][]) {
+
+		int penalizacion = 0;
 		int cX = 0, cY = HOURPERDAY - 1;
-		for (int i = 0; i < Individuo.SIZEA; i++) {
+		RelacionPM piv[] = new RelacionPM[HOURPERDAY];
+		for (int i = 0; i < Individuo.SIZEA; i++) { // for para iterar los
+													// semestres
+			cX = 0;
+			cY = HOURPERDAY - 1;
+			for (int j = 0; j < Individuo.SIZEA; j++) {// for para iterar los
+														// dias
 
-			for (int j = 0; j < Individuo.SIZEA; j++) {
+				for (int k = cX, z = 0; k < cY; k++, z++) { // for para iterar
+															// los dias con sus
+															// horas
+					piv[z] = temp[i][k]; // se llena arreglo temporal
 
-				for (int k = cX; k < cY; k++) {
-				RelacionPM pivote=temp[cX][cY];
-					
-					
 				}
-				
-				cX = cX + HOURPERDAY;
-				cY = cY + HOURPERDAY;
+				penalizacion = +Eval(piv);
+				cX = +HOURPERDAY;
+				cY = +HOURPERDAY;
 			}
-
 		}
 
-		return null;
+		return penalizacion;
 	}
+
+	private int Eval(RelacionPM temp[]) {
+
+		TreeSet<RelacionPM> t=new TreeSet<RelacionPM>();
+		for (int i = 0; i < temp.length; i++) {
+			
+			for (int j = 0; j < temp.length; j++) {
+				if (temp[i].equals(temp[j])) {
+					temp[i].tempRepet++;
+				}
+
+			}
+			t.add(temp[i]);
+		}
+		
+		for (int i = 0; i < temp.length; i++) {
+			RelacionPM relacionPM = temp[i];
+			
+		}
 	
-	private boolean Search(Object i){
-		return false;
-		
-		
+ 
+	
+		return 0;
+
 	}
-	
-	
 
 	/**
 	 * Metodo para hallar la moda en un vector de enteros Utilizando la tecnica

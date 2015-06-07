@@ -1,12 +1,14 @@
 package com.Unistmo.Engine.ag;
 
-public class RelacionPM {
+public class RelacionPM implements Comparable<RelacionPM>{
 
 	private int idProfesor;
 	private int idMateria;
 	private String nombreP;
 	private String nombreM;
-		public RelacionPM(){
+	public  int tempRepet;
+	
+	public RelacionPM(){
 		}
 		public RelacionPM(int idP,int idM,String nP,String nM){
 			this.idProfesor=idP;
@@ -67,6 +69,16 @@ public class RelacionPM {
 		 */
 		public void setNombreM(String nombreM) {
 			this.nombreM = nombreM;
+		}
+		@Override
+		public int compareTo(RelacionPM arg0) {
+		
+			
+			return 0;
+		}
+		public boolean equals(Object e){
+			RelacionPM m=(RelacionPM) e;
+			return (m.idMateria==this.idMateria) ? true : false;	
 		}
 		
 }
