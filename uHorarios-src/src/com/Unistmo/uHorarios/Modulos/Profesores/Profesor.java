@@ -3,7 +3,7 @@ package com.Unistmo.uHorarios.Modulos.Profesores;
 import java.sql.Date;
 /**
  * Clase profesor
- * Contiene los datos del profesor
+ * Contiene los datos genericos de un profesor
  * 
  * @author Cosijopii García García
  * @version 1.0
@@ -48,7 +48,10 @@ public class Profesor {
 	 * @see com.Unistmo.uHorarios.RecursosConstantes
 	 */
 	private String carrera;
-	
+	/**
+	 * Define la hora de entrada del profesor al horario de clases
+	 */
+	private String HoraEntrada;
 	/**
 	 * Constructor por defecto
 	 */
@@ -63,9 +66,10 @@ public class Profesor {
 	 * @param id numero de nomina del profesor o clave
 	 * @param edificio Numero de edificio al cual pertecene el profesor
 	 * @param carrera Carrera al cual pertenece el profesor
+	 * @param HoraEntrada Hora de entrada del profesor 
 	 */
 	public Profesor(String nombre,String foto,String correo,int nCubo,
-			String telefono, Date fNacimiento,String id,int edificio, String carrera ){
+			String telefono, Date fNacimiento,String id,int edificio, String carrera,String HoraEntrada){
 		
 		this.nombre=nombre;
 		this.foto=foto;
@@ -76,8 +80,21 @@ public class Profesor {
 		this.id=id;
 		this.edificio=edificio;
 		this.carrera=carrera;
+		this.HoraEntrada=HoraEntrada;
 	}
 
+	/**
+	 * @return the horaEntrada
+	 */
+	public String getHoraEntrada() {
+		return HoraEntrada;
+	}
+	/**
+	 * @param horaEntrada the horaEntrada to set
+	 */
+	public void setHoraEntrada(String horaEntrada) {
+		HoraEntrada = horaEntrada;
+	}
 	/**
 	 * @return the nombre
 	 */

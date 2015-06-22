@@ -16,16 +16,16 @@ public class Cruza {
 	 */
 	public static Individuo cruza2puntos(Individuo g1 ,Individuo g2){
 	
-		RelacionPM[] sub1=Mtoarray(g1.getMat(), 0, 0,Individuo.SIZEB-7);
-		RelacionPM[] sub2=Mtoarray(g1.getMat(), 1, 0,Individuo.SIZEB-7);
-		RelacionPM[] sub3=Mtoarray(g1.getMat(), 2, 0,Individuo.SIZEB-7);
+		RelacionPM[] sub1=Mtoarray(g1.getMat(), 0, 0,Individuo.HOURS_WORKERD_PER_WEEK-7);
+		RelacionPM[] sub2=Mtoarray(g1.getMat(), 1, 0,Individuo.HOURS_WORKERD_PER_WEEK-7);
+		RelacionPM[] sub3=Mtoarray(g1.getMat(), 2, 0,Individuo.HOURS_WORKERD_PER_WEEK-7);
 		
-		RelacionPM[] sub4=Mtoarray(g2.getMat(), 0, 8,Individuo.SIZEB);
-		RelacionPM[] sub5=Mtoarray(g2.getMat(), 1, 8,Individuo.SIZEB);
-		RelacionPM[] sub6=Mtoarray(g2.getMat(), 2, 8,Individuo.SIZEB);	
-		RelacionPM[][] cria=new RelacionPM[Individuo.SIZEA][Individuo.SIZEB];
+		RelacionPM[] sub4=Mtoarray(g2.getMat(), 0, 8,Individuo.HOURS_WORKERD_PER_WEEK);
+		RelacionPM[] sub5=Mtoarray(g2.getMat(), 1, 8,Individuo.HOURS_WORKERD_PER_WEEK);
+		RelacionPM[] sub6=Mtoarray(g2.getMat(), 2, 8,Individuo.HOURS_WORKERD_PER_WEEK);	
+		RelacionPM[][] cria=new RelacionPM[Individuo.NUMBER_OF_DAYS][Individuo.HOURS_WORKERD_PER_WEEK];
 		
-		for (int i = 0; i < Individuo.SIZEB; i++) {		
+		for (int i = 0; i < Individuo.HOURS_WORKERD_PER_WEEK; i++) {		
 			cria[0][i]= (i< sub1.length) ? sub1[i] :sub4[i-sub1.length]; 			
 			cria[1][i]= (i< sub2.length) ? sub2[i] :sub5[i-sub2.length]; 		
 			cria[2][i]= (i< sub3.length) ? sub3[i] :sub6[i-sub3.length]; 		
@@ -58,15 +58,15 @@ public class Cruza {
 		int crossPoint=DatosProfesoresMaterias.GenerarR(0, indA.size()-1);
 		
 		offp1.addAll(indA.subList(0, crossPoint));
-		offp1.addAll(indB.subList(crossPoint, Individuo.SIZEA*Individuo.SIZEB));
+		offp1.addAll(indB.subList(crossPoint, Individuo.NUMBER_OF_DAYS*Individuo.HOURS_WORKERD_PER_WEEK));
 		offp2.addAll(indB.subList(0,crossPoint));
-		offp2.addAll(indA.subList(crossPoint, Individuo.SIZEA*Individuo.SIZEB));
+		offp2.addAll(indA.subList(crossPoint, Individuo.NUMBER_OF_DAYS*Individuo.HOURS_WORKERD_PER_WEEK));
 		
 		Individuo cr1 =new Individuo();
 		Individuo cr2 =new Individuo();
 		int c=0;
-		for (int i = 0; i < Individuo.SIZEA; i++) {
-			for (int j = 0; j < Individuo.SIZEB; j++) {
+		for (int i = 0; i < Individuo.NUMBER_OF_DAYS; i++) {
+			for (int j = 0; j < Individuo.HOURS_WORKERD_PER_WEEK; j++) {
 				cr1.getMat()[i][j]=offp1.get(c);
 				cr2.getMat()[i][j]=offp2.get(c);
 				c++;
@@ -79,8 +79,8 @@ public class Cruza {
 	}
 	public static ArrayList<RelacionPM> MtoArray(Individuo mat){
 		ArrayList<RelacionPM> array=new ArrayList<RelacionPM>();
-		for (int i = 0; i < Individuo.SIZEA; i++) {
-			for (int j = 0; j < Individuo.SIZEB; j++) {
+		for (int i = 0; i < Individuo.NUMBER_OF_DAYS; i++) {
+			for (int j = 0; j < Individuo.HOURS_WORKERD_PER_WEEK; j++) {
 				array.add(mat.getMat()[i][j]);
 			}
 		}

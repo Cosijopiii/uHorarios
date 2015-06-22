@@ -23,7 +23,7 @@ public class ControlLogeo implements ActionListener {
 		if(login.getUser().getText().equals("qwe")&&String.valueOf(login.getPassword().getPassword()).equals("123")){
 			login.setVisible(false);
 			login.dispose();
-	
+			PanelContenedorMenuPrincipal menu=new PanelContenedorMenuPrincipal() ;
 			
 			
 		}else{

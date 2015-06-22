@@ -1,10 +1,11 @@
 package com.Unistmo.Engine.ag;
 
 
+import java.util.Iterator;
 import java.util.TreeSet;
 
 public class Evaluacion {
-
+	public static final int CONSTRAINS =2;
 	public static final int HOURPERDAY = 5;
 
 	/**
@@ -41,7 +42,14 @@ public class Evaluacion {
 
 		return G;
 	}
-
+	/**
+	 * Evalua una Instancia de una @see Generacion G
+	 * mediante los metodos de evaluacion 
+	 * 
+	 * @param nGen
+	 * @return La Generacion con los individuos ya
+	 *         evaluados
+	 */
 	public Generacion fitness(Generacion G) {
 		double pena = 1;
 		double fit = 0;
@@ -50,18 +58,18 @@ public class Evaluacion {
 			for (int i = 0; i < 15; i++) {
 				if (inv.getMat()[0][i].getIdProfesor() == inv.getMat()[1][i]
 						.getIdProfesor())
-					pena = pena + 1;
+					pena = pena + 2;
 				if (inv.getMat()[1][i].getIdProfesor() == inv.getMat()[2][i]
 						.getIdProfesor())
-					pena = pena + 1;
+					pena = pena + 2;
 				if (inv.getMat()[2][i].getIdProfesor() == inv.getMat()[0][i]
 						.getIdProfesor())
-					pena = pena + 1;
+					pena = pena + 2;
 			}
 			fit = (1 / pena);
 			inv.setAptitud(fit);
 		}
-		// twoHours (G);
+		 twoHours (G);
 		return G;
 	}
 
@@ -98,30 +106,34 @@ public class Evaluacion {
 	public Generacion twoHours(Generacion G) {
 
 		double pena = 1;
-		double fit = 0;
+		double fit = 1;
 
 		for (Individuo inv : G.getGenInd()) {
 
 			RelacionPM temp[][] = inv.getMat();
-			subTabla(temp);
-
+			pena=subTabla_twoHours(temp);
 			fit = (1 / pena);
-			inv.setAptitud(inv.getAptitud() + fit);
+			inv.setAptitud((inv.getAptitud() + fit)/CONSTRAINS);
 		}
 
 		return G;
 	}
-
-	private int subTabla(RelacionPM temp[][]) {
+	/**
+	 * retorna la penalizacion de una subparte de un horario
+	 * tal parte es abstractamente un dia de trabajo
+	 * @param temp
+	 * @return
+	 */
+	private int subTabla_twoHours(RelacionPM temp[][]) {
 
 		int penalizacion = 0;
-		int cX = 0, cY = HOURPERDAY - 1;
+		int cX = 0, cY = HOURPERDAY;
 		RelacionPM piv[] = new RelacionPM[HOURPERDAY];
-		for (int i = 0; i < Individuo.SIZEA; i++) { // for para iterar los
+		for (int i = 0; i < Individuo.NUMBER_OF_DAYS; i++) { // for para iterar los
 													// semestres
 			cX = 0;
-			cY = HOURPERDAY - 1;
-			for (int j = 0; j < Individuo.SIZEA; j++) {// for para iterar los
+			cY = HOURPERDAY;
+			for (int j = 0; j < Individuo.NUMBER_OF_DAYS; j++) {// for para iterar los
 														// dias
 
 				for (int k = cX, z = 0; k < cY; k++, z++) { // for para iterar
@@ -130,7 +142,9 @@ public class Evaluacion {
 					piv[z] = temp[i][k]; // se llena arreglo temporal
 
 				}
-				penalizacion = +Eval(piv);
+				
+				penalizacion = +Penalizacion_twoHours(piv);
+			//	System.out.println("subtabla: "+penalizacion);
 				cX = +HOURPERDAY;
 				cY = +HOURPERDAY;
 			}
@@ -138,32 +152,72 @@ public class Evaluacion {
 
 		return penalizacion;
 	}
-
-	private int Eval(RelacionPM temp[]) {
+	/**
+	 * Recibe la subtabla y evalua que se cumplan las condiciones del 
+	 * metodo 
+	 * @param temp
+	 * @return
+	 */
+	private int Penalizacion_twoHours(RelacionPM temp[]){
+		int penalizacion = 1;
+		TreeSet<RelacionPM> t	=Frec_twoHours(temp);
+		for (Iterator<RelacionPM> iterator = t.iterator(); iterator.hasNext();) {
+			RelacionPM r = (RelacionPM) iterator.next();
+			if(r.tempRepeat==3){
+				System.out.println(r.tempRepeat);
+				penalizacion=penalizacion+1;
+			}
+			if(r.tempRepeat>1){
+				for (int i = 0; i < temp.length; i++) {
+					if(r.getIdMateria()==temp[i].getIdMateria()){
+						if(i==0){
+							if(!(r.getIdMateria()==temp[i+1].getIdMateria())){
+								penalizacion++;
+							}
+						}
+						else if(i==temp.length-1){
+							if(!(r.getIdMateria()==temp[i-1].getIdMateria())){
+								penalizacion++;
+							}
+						}
+						else{
+							if(!(r.getIdMateria()==temp[i+1].getIdMateria()||r.getIdMateria()==temp[i-1].getIdMateria())){
+								penalizacion++;
+							}
+						}
+					}
+				}	
+			}
+		}
+		return penalizacion;
+	}
+	/**
+	 * Devuelve un arbol donde cada nodo es una relacion de maestros y materias 
+	 * y en el atributo tempRepeat se guardan las repeticione de las mismas en el dia
+	 * correspondiente
+	 * al ser un arbol este no tiene duplicados 
+	 * @param temp
+	 * @return frecuencia
+	 */
+	private TreeSet<RelacionPM> Frec_twoHours(RelacionPM temp[]) {
 
 		TreeSet<RelacionPM> t=new TreeSet<RelacionPM>();
 		for (int i = 0; i < temp.length; i++) {
 			
 			for (int j = 0; j < temp.length; j++) {
+			
 				if (temp[i].equals(temp[j])) {
-					temp[i].tempRepet++;
-				}
-
+				
+					temp[i].tempRepeat++;
+				}	
 			}
 			t.add(temp[i]);
+			//System.out.println(t);
 		}
-		
-		for (int i = 0; i < temp.length; i++) {
-			RelacionPM relacionPM = temp[i];
-			
-		}
-	
- 
-	
-		return 0;
-
+	return t;
 	}
-
+		
+	
 	/**
 	 * Metodo para hallar la moda en un vector de enteros Utilizando la tecnica
 	 * Divide y Venceras

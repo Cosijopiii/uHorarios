@@ -22,7 +22,12 @@ import javax.swing.JSeparator;
 
 
 
+
+
+import com.Unistmo.uHorarios.Modulos.Materias.PanelMaterias;
+
 import java.awt.Component;
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Rectangle;
 @SuppressWarnings("serial")
@@ -44,6 +49,21 @@ public class PanelLogeo extends JDialog  {
 	private JButton okButton;
 	private JButton cancelButton;
 
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PanelLogeo dialog=new PanelLogeo();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 	public PanelLogeo() {
 		setUndecorated(true);
 		
@@ -64,18 +84,22 @@ public class PanelLogeo extends JDialog  {
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(139, 0, 0));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.NORTH);
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
 			password = new JPasswordField();
+			password.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		}
 		
 		user = new JTextField();
+		user.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		user.setColumns(10);
 		
 		lbluser = new JLabel("Usuario");
+		lbluser.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lbluser.setForeground(Color.WHITE);
 		
 		lblpass = new JLabel("Contrase\u00F1a");
+		lblpass.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblpass.setForeground(Color.WHITE);
 		
 		separator = new JSeparator();
@@ -99,57 +123,53 @@ public class PanelLogeo extends JDialog  {
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel)
-						.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
+						.addGroup(Alignment.TRAILING, gl_contentPanel.createParallelGroup(Alignment.TRAILING)
+							.addComponent(lblNewLabel)
 							.addGroup(gl_contentPanel.createSequentialGroup()
 								.addContainerGap()
 								.addComponent(separator, GroupLayout.PREFERRED_SIZE, 419, GroupLayout.PREFERRED_SIZE))
 							.addGroup(gl_contentPanel.createSequentialGroup()
 								.addGap(23)
 								.addComponent(lblimagew)
-								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGap(203))
+							.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
+								.addGap(98)
 								.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-									.addGroup(gl_contentPanel.createSequentialGroup()
-										.addGap(35)
-										.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-											.addGroup(gl_contentPanel.createSequentialGroup()
-												.addComponent(lbluser)
-												.addGap(28))
-											.addGroup(gl_contentPanel.createSequentialGroup()
-												.addComponent(lblpass)
-												.addGap(18)))
-										.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-											.addComponent(user, GroupLayout.PREFERRED_SIZE, 157, GroupLayout.PREFERRED_SIZE)
-											.addComponent(password)))
-									.addGroup(gl_contentPanel.createSequentialGroup()
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(lblE, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(lbltitle)
-										.addGap(2))))))
-					.addContainerGap(14, Short.MAX_VALUE))
+									.addComponent(lbluser)
+									.addComponent(lblpass))
+								.addGap(28)
+								.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+									.addComponent(password, GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+									.addComponent(user, GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblE, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lbltitle)))
+					.addContainerGap())
 		);
 		gl_contentPanel.setVerticalGroup(
-			gl_contentPanel.createParallelGroup(Alignment.LEADING)
+			gl_contentPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addComponent(lblNewLabel)
-							.addGap(24)
+							.addGap(16)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lbltitle, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblE, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
-							.addGap(74)
+							.addGap(71)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(user, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lbluser)))
+								.addComponent(lbluser))
+							.addGap(4))
 						.addComponent(lblimagew))
-					.addGap(14)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblpass)
-						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(32)
+						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblpass))
+					.addGap(73)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(17))
 		);

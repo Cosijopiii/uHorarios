@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.swing.JOptionPane;
 
 
 
@@ -12,9 +11,10 @@ public class TestGeneracion {
 
 	public static void main(String argv[]) {
 
+		final int size =100;
+
 		Evaluacion eval =new Evaluacion();
-		Generacion G=eval.fitness(1000);
-		final int size =1000;
+		Generacion G=eval.fitness(size);
 		//G.imprimirGen(G);
 	    List<Double> x = new ArrayList<Double>();
 		for (Individuo inv : G.getGenInd()) {
@@ -33,9 +33,8 @@ public class TestGeneracion {
 		temp=G;
 			
 		GenArray[0]=G.generar(temp);
-		GenArray[0].getGenInd().get(0).ImprimirInd(GenArray[0].getGenInd().get(0));
-		//Algoritmo genetico
-		/*
+		//GenArray[0].getGenInd().get(0).ImprimirInd(GenArray[0].getGenInd().get(0));
+		//Algoritmo genetico	
 		for (int i = 1; i < size; i++) {
 			
 			GenArray[i]=G.generar(GenArray[i-1]);
@@ -60,7 +59,8 @@ public class TestGeneracion {
 			sum2=sum2/y.size();
 			System.out.println("agv gen "+i+" ="+sum2+" "+y.size()+" best= "+count);
 		}
-		*/
+		
+		GenArray[0].getGenInd().get(0).ImprimirInd(GenArray[size-1].getGenInd().get(GenArray[0].getGenInd().size()-1));
 		
 	
 	}

@@ -40,6 +40,10 @@ public interface RecursosConstantes {
 	 * Edificios de profesores
 	 */
 	public static final String EDIFICIOS [] ={"1", "2"};
+	
+	
+	
+	public static final String HORA_ENTRADA[]={"8:00 AM","9:00 AM"};
 	/**
 	 * Carreras que imparte la universidad
 	 */
@@ -80,7 +84,7 @@ public interface RecursosConstantes {
 
 	
     /**
-     * Metodo que resive un String y regresa el String modificado con las primeras letras en mayusculas
+     * Metodo que recibe un String y regresa el String modificado con las primeras letras en mayusculas
      * por ejemplo "hola sol", Salida "Hola Sol" 
      * @param str String a formatear
      * @return String ya formateado con las primeras letras de cada palabra en mayusculas
@@ -95,14 +99,18 @@ public interface RecursosConstantes {
 				}	
     	return sb.toString().trim();
     }
-    
+   /**
+    * Metodo que busca en un coleccion de objectos T un objecto I y regresa la posicion en la que se encuentra
+    * dicho objecto
+    * @param i Objecto a buscar;
+    * @param t Coleccion de objectos en donde se buscara;
+    * @return int x donde x es la posicion del objecto actual, en caso de no encontrarce el objecto se regresara -1
+    */
     public static int Buscar(Object i,Object[] t)
 	{
-		for (int j = 0; j<t.length; j++) {
-			if(i.equals(t[j])){
-				return j;
-			}
-		}	
-		return -1;
+    	int p=-1;
+		for (int j = 0; j<t.length; j++) 
+				p=(i.equals(t[j])) ? j  : -1;
+		return p;
 	}
 }

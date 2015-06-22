@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -23,6 +24,7 @@ import javax.swing.DefaultComboBoxModel;
 
 import com.Unistmo.uHorarios.RecursosConstantes;
 import com.toedter.calendar.JDateChooser;
+
 
 
 import javax.swing.ListSelectionModel;
@@ -184,7 +186,7 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 		lblHoraEntrada.setFont(new Font("DengXian", Font.PLAIN, 16));
 		
 		cmbHoraEntrada = new JComboBox();
-		cmbHoraEntrada.setModel(new DefaultComboBoxModel(new String[] {"8:00 AM", "9:00 AM"}));
+		cmbHoraEntrada.setModel(new DefaultComboBoxModel(HORA_ENTRADA));
 
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -334,7 +336,11 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 		this.txtTelefono.addKeyListener(listener);
 		this.txtNombre.addKeyListener(listener);
 		this.btnEliminar.addActionListener(listener);
-		listModel.setProfesores(listener.Select_all_Profesor());
+		try {
+			listModel.setProfesores(listener.Select_all_Profesor());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**

@@ -4,10 +4,11 @@ package com.Unistmo.Engine.ag;
 public class Individuo implements Comparable<Individuo>{
 	
 	
-	public static final int SIZEA=3;
-	public static final int SIZEB=15;
+	public static final int NUMBER_OF_DAYS=3;
+	public static final int NUMBER_OF_HOURS_PER_DAY=5;
+	public static final int HOURS_WORKERD_PER_WEEK=NUMBER_OF_DAYS*NUMBER_OF_HOURS_PER_DAY;
 	private double aptitud;
-	private RelacionPM  Mat[][]=new RelacionPM [SIZEA][SIZEB];
+	private RelacionPM  Mat[][]=new RelacionPM [NUMBER_OF_DAYS][HOURS_WORKERD_PER_WEEK];
 	public Individuo(){
 		
 	}
@@ -16,8 +17,8 @@ public class Individuo implements Comparable<Individuo>{
 	}
 	public void ImprimirInd(Individuo I){
 		
-		for (int j = 0; j < 15; j++) {
-			for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < HOURS_WORKERD_PER_WEEK; j++) {
+			for (int i = 0; i < NUMBER_OF_DAYS; i++) {
 				System.out.print(I.getMat()[i][j].toString()+"|** ");	
 			}
 			System.out.println("\n");
