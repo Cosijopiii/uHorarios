@@ -24,7 +24,6 @@ public class Cruza {
 		RelacionPM[] sub5=Mtoarray(g2.getMat(), 1, 8,Individuo.HOURS_WORKERD_PER_WEEK);
 		RelacionPM[] sub6=Mtoarray(g2.getMat(), 2, 8,Individuo.HOURS_WORKERD_PER_WEEK);	
 		RelacionPM[][] cria=new RelacionPM[Individuo.NUMBER_OF_DAYS][Individuo.HOURS_WORKERD_PER_WEEK];
-		
 		for (int i = 0; i < Individuo.HOURS_WORKERD_PER_WEEK; i++) {		
 			cria[0][i]= (i< sub1.length) ? sub1[i] :sub4[i-sub1.length]; 			
 			cria[1][i]= (i< sub2.length) ? sub2[i] :sub5[i-sub2.length]; 		
@@ -50,6 +49,7 @@ public class Cruza {
 		}
 		return arr;
 	}
+	@SuppressWarnings("unused")
 	public static ArrayList<Individuo> CruzaAleatoria(Individuo a,Individuo b){
 		ArrayList<RelacionPM> indA=MtoArray(a);
 		ArrayList<RelacionPM> indB=MtoArray(b);
@@ -72,7 +72,12 @@ public class Cruza {
 				c++;
 			}
 		}	
-		ArrayList<Individuo> cruza=new ArrayList<Individuo>();
+		ArrayList<Individuo> cruza=null;
+		if(cruza==null){
+			cruza =new ArrayList<Individuo>();
+		}else{
+			cruza.clear();
+		}
 		cruza.add(cr1);
 		cruza.add(cr2);
 		return cruza;
@@ -86,7 +91,6 @@ public class Cruza {
 		}
 		return  array;
 	}
-
 	public Individuo getG1() {
 		return g1;
 	}

@@ -11,7 +11,7 @@ public class TestGeneracion {
 
 	public static void main(String argv[]) {
 
-		final int size =100;
+		final int size =1000;
 
 		Evaluacion eval =new Evaluacion();
 		Generacion G=eval.fitness(size);
@@ -59,8 +59,7 @@ public class TestGeneracion {
 			sum2=sum2/y.size();
 			System.out.println("agv gen "+i+" ="+sum2+" "+y.size()+" best= "+count);
 		}
-		
-		GenArray[0].getGenInd().get(0).ImprimirInd(GenArray[size-1].getGenInd().get(GenArray[0].getGenInd().size()-1));
+		GenArray[0].getGenInd().get(0).ImprimirInd(GenArray[size-1].getGenInd().get(GenArray[0].getGenInd().size()-2));
 		
 	
 	}

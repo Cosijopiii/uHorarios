@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.Unistmo.uHorarios.RecursosConstantes;
+import com.Unistmo.uHorarios.Modulos.RecursosConstantes;
 
 public class ControlMaterias extends QueryMaterias implements ActionListener,KeyListener,RecursosConstantes,ListSelectionListener{
 
@@ -122,7 +122,7 @@ public class ControlMaterias extends QueryMaterias implements ActionListener,Key
 		Materia m=comp.getListModel().getElementP(seleccion);
 		comp.getTxtClave().setText(String.valueOf(m.getId()));
 		comp.getTxtNombre().setText(m.getNombre());
-		comp.getCmbSemestre().setSelectedIndex(RecursosConstantes.Buscar(String.valueOf(m.getSemestre()),SEMESTRES));
+		comp.getCmbSemestre().setSelectedIndex(RecursosConstantes.Buscar(String.valueOf(m.getSemestre()),RecursosConstantes.SEMESTRES));
 		comp.getTxtClave().setEnabled(false);
 		}
 		

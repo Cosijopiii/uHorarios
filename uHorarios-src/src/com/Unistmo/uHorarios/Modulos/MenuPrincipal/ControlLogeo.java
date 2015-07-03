@@ -23,21 +23,14 @@ public class ControlLogeo implements ActionListener {
 		if(login.getUser().getText().equals("qwe")&&String.valueOf(login.getPassword().getPassword()).equals("123")){
 			login.setVisible(false);
 			login.dispose();
-			PanelContenedorMenuPrincipal menu=new PanelContenedorMenuPrincipal() ;
-			
-			
+			FrameMenu.getInstance().setVisible(true);			
 		}else{
 			JOptionPane.showMessageDialog(login,"\tDatos incorrectos","Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	if(e.getSource()==login.getCancelButton()){
-		
 		System.exit(0);
-		
 	}
-		
-		
-		
 	}
 
 }

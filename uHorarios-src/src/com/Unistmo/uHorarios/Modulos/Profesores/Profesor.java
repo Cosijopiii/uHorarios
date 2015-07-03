@@ -40,12 +40,12 @@ public class Profesor {
 	private String id;
 	/**
 	 * Edificio al que pertenece el Profesor solo hay 2 ; E1 o E2
-	 *  @see com.Unistmo.uHorarios.RecursosConstantes
+	 *  @see com.Unistmo.uHorarios.Modulos.RecursosConstantes
 	 */
 	private int edificio;
 	/**
 	 * Carrera a la cual pertenece el profesor
-	 * @see com.Unistmo.uHorarios.RecursosConstantes
+	 * @see com.Unistmo.uHorarios.Modulos.RecursosConstantes
 	 */
 	private String carrera;
 	/**

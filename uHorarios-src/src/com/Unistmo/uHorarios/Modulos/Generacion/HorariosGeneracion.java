@@ -32,7 +32,7 @@ public class HorariosGeneracion extends JDialog {
 	 * Create the dialog.
 	 */
 	public HorariosGeneracion() {
-		setBounds(100, 100, 847, 404);
+		setBounds(100, 100, 713, 445);
 
 	}
 

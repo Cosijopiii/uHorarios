@@ -3,7 +3,7 @@ package com.Unistmo.Engine.ag;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Generacion implements DatosProfesoresMaterias {
+public class Generacion extends QueryGenetic implements DatosProfesoresMaterias {
 	private int nI;
 	private ArrayList<Individuo> genInd = new ArrayList<>();
 	private int maxRamNum[] = new int[5];
@@ -65,7 +65,6 @@ public class Generacion implements DatosProfesoresMaterias {
 		ArrayList<Individuo> gen = new ArrayList<Individuo>();
 		G = eval.fitness(G);
 		Collections.sort(G.genInd);
-		// Collections.shuffle(G.genInd);
 		gen.addAll(G.genInd.subList(0, (G.genInd.size()) / 2));
 		ArrayList<Individuo> newGeneracion = new ArrayList<Individuo>();
 		for (int i = 0; i < gen.size(); i++)
@@ -80,15 +79,7 @@ public class Generacion implements DatosProfesoresMaterias {
 		int c = 1;
 		for (Individuo inv : G.getGenInd()) {
 
-			for (int j = 0; j < Individuo.HOURS_WORKERD_PER_WEEK; j++) {
-				for (int i = 0; i < Individuo.NUMBER_OF_DAYS; i++) {
-					System.out.print(inv.getMat()[i][j].toString() + "|** ");
-				}
-
-				System.out.println("\n");
-				if (j == 4 || j == 9 || j == 14)
-					System.out.println("<-fin dia-> " + (c++));
-			}
+			inv.ImprimirInd(inv);
 			c = 1;
 			System.out.println("Aptitud: " + inv.getAptitud());
 			System.out

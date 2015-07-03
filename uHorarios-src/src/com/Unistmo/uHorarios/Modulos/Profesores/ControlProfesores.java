@@ -13,7 +13,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 
-import com.Unistmo.uHorarios.*;
+import com.Unistmo.uHorarios.Modulos.RecursosConstantes;
 
 import javax.imageio.ImageIO;
 import javax.sound.midi.InvalidMidiDataException;
@@ -32,7 +32,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Cosijopii
  * @version 1.0
  * Control que maneja la interfaz grafica del las clases PanelProfesor y Profesor
- * 
  */
 public class ControlProfesores extends QueryProfesores implements
 		ActionListener, KeyListener, ListSelectionListener, RecursosConstantes {
@@ -56,16 +55,14 @@ public class ControlProfesores extends QueryProfesores implements
 	 * Representa la ruta abosulta que se obtendra del JFileChooser
 	 */
 	private String rutaFoto;
-/**
- * Contructor que implementa el patron de diseño MVC
- * @param pnaProfesores
- */
+	/**
+	 * Contructor que implementa el patron de diseño MVC
+	 * @param pnaProfesores
+	 */
 	public ControlProfesores(PanelProfesores pnaProfesores) {
 		comp = pnaProfesores;
 		jf.setFileFilter(new FileNameExtensionFilter("JPG & PNG", "jpg", "png"));
-
 	}
- 
  	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == comp.getBtnGuardar())
@@ -124,17 +121,14 @@ public class ControlProfesores extends QueryProfesores implements
 			comp.getTxtCorreo().setText(p.getCorreo());
 			comp.getTxtTelefono().setText(p.getTelefono());
 			comp.getCmbCarreras().setSelectedIndex(
-					RecursosConstantes.Buscar(p.getCarrera(), CARRERAS));
+					RecursosConstantes.Buscar(p.getCarrera().trim(),CARRERAS));
+
 			comp.getCmbCubiculo().setSelectedIndex(
-					RecursosConstantes.Buscar(String.valueOf(p.getnCubo()),
-							CUBICULOS));
+					RecursosConstantes.Buscar(String.valueOf(p.getnCubo()).trim(),CUBICULOS));
 			comp.getCmbEdificio().setSelectedIndex(
-					RecursosConstantes.Buscar(String.valueOf(p.getEdificio()),
-							EDIFICIOS));
+					RecursosConstantes.Buscar(String.valueOf(p.getEdificio()).trim(),EDIFICIOS));
 			comp.getCmbHoraEntrada()
-					.setSelectedIndex(
-							RecursosConstantes.Buscar(p.getHoraEntrada(),
-									HORA_ENTRADA));
+					.setSelectedIndex(RecursosConstantes.Buscar(p.getHoraEntrada().trim(),HORA_ENTRADA));
 			comp.getTxtClave().setEnabled(false);
 			AccionFoto(p.getFoto());
 			try {
@@ -379,6 +373,7 @@ public class ControlProfesores extends QueryProfesores implements
 		comp.getLblFoto().setIcon(null);
 		comp.getLblFoto().setText("Seleccione una foto");
 		comp.getTxtClave().setEnabled(true);
+		
 		rutaFoto = null;
 	}
 
@@ -399,4 +394,5 @@ public class ControlProfesores extends QueryProfesores implements
 	public void keyTyped(KeyEvent e) {
 	}
 
+	
 }

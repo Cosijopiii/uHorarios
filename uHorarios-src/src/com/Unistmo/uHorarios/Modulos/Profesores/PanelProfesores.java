@@ -22,8 +22,10 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-import com.Unistmo.uHorarios.RecursosConstantes;
+import com.Unistmo.uHorarios.Modulos.RecursosConstantes;
 import com.toedter.calendar.JDateChooser;
+
+
 
 
 
@@ -63,6 +65,7 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 	private JLabel lblTituloProfesores;
 	private JLabel lblHoraEntrada;
 	private JComboBox<?> cmbHoraEntrada;
+	private static PanelProfesores instance=null;
 	/**
 	 * Launch the application.
 	 */
@@ -80,11 +83,20 @@ public class PanelProfesores extends JDialog implements RecursosConstantes{
 		});
 	}
 
+		public static PanelProfesores getInstance(){
+			if(instance==null){
+				instance=new PanelProfesores();
+			}
+			return instance;
+			
+		}
+	
 	/**
 	 * Create the dialog.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public PanelProfesores() {
+	private PanelProfesores() {
+		setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		getContentPane().setForeground(new Color(218, 165, 32));
 		setTitle("uProfesores");
 		listener =new ControlProfesores(this);

@@ -1,13 +1,25 @@
 package com.Unistmo.Engine.ag;
-
-
 public class Individuo implements Comparable<Individuo>{
-	
-	
+	/**
+	 * Numero de dias trabajados
+	 */
 	public static final int NUMBER_OF_DAYS=3;
+	/**
+	 * numero de horas trabajadas por dia
+	 */
 	public static final int NUMBER_OF_HOURS_PER_DAY=5;
+	/**
+	 * numero de horas trabajadas por semanna
+	 */
 	public static final int HOURS_WORKERD_PER_WEEK=NUMBER_OF_DAYS*NUMBER_OF_HOURS_PER_DAY;
+	/**
+	 * Valor que define que tan apto es el individuo para ser un candidato a horario
+	 */
 	private double aptitud;
+	/**
+	 * Matriz donde se guardan todas las relaciones de profesores y las materias
+	 * 
+	 */
 	private RelacionPM  Mat[][]=new RelacionPM [NUMBER_OF_DAYS][HOURS_WORKERD_PER_WEEK];
 	public Individuo(){
 		
@@ -22,21 +34,18 @@ public class Individuo implements Comparable<Individuo>{
 				System.out.print(I.getMat()[i][j].toString()+"|** ");	
 			}
 			System.out.println("\n");
-			if(j==4||j==9||j==14)
+			if(j==NUMBER_OF_HOURS_PER_DAY-1|j==(NUMBER_OF_HOURS_PER_DAY*2)-1|j==(NUMBER_OF_HOURS_PER_DAY*3)-1)
 				System.out.println("<-fin dia-> ");
 		}
 		System.out.println("Aptitud: "+I.getAptitud());
-		System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------");		
+		System.out.println("-------------------------------------------------------------------------------------");		
 	}
-	
 	public RelacionPM[][] getMat() {
 		return Mat;
 	}
-
 	public void setMat(RelacionPM mat[][]) {
 		Mat = mat;
 	}
-
 	public double getAptitud() {
 		return aptitud;
 	}
@@ -51,6 +60,4 @@ public class Individuo implements Comparable<Individuo>{
     		return -1;
     	return 0;
 	}
-
-
 }

@@ -26,8 +26,10 @@ import java.awt.GridLayout;
 
 import javax.swing.border.LineBorder;
 
-import com.Unistmo.uHorarios.RecursosConstantes;
+import com.Unistmo.uHorarios.Modulos.RecursosConstantes;
+
 import java.awt.Cursor;
+
 import javax.swing.ListSelectionModel;
 
 
@@ -51,6 +53,7 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 	private JLabel lblSemestres;
 	private JComboBox<?> cmbSemestresList;
 	private ModeloListMaterias listModel;
+	private static PanelMaterias instance=null;
 	/**
 	 * Launch the application.
 	 */
@@ -68,11 +71,19 @@ public class PanelMaterias extends JDialog implements RecursosConstantes {
 		});
 	}
 
+	public static PanelMaterias getInstance(){
+		if(instance==null){
+			instance=new PanelMaterias();
+		}
+		return instance;
+	}
+	
 	/**
 	 * Create the dialog.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public PanelMaterias() {
+	private PanelMaterias() {
+		setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		getContentPane().setFont(new Font("DengXian", Font.PLAIN, 18));
 		setResizable(false);
 		getContentPane().setBackground(new Color(128, 0, 0));

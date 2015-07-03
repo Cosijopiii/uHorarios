@@ -72,7 +72,7 @@ public class Evaluacion {
 		 twoHours (G);
 		return G;
 	}
-
+  
 	public Individuo fitness(Individuo inv) {
 		double pena = 1;
 		double fit = 0;
@@ -90,18 +90,16 @@ public class Evaluacion {
 		fit = (1 / pena);
 		inv.setAptitud(fit);
 		return inv;
-
 	}
-
 	/**
 	 * Funcion que evalua una generacion en la cual la su funcion objetivo es
 	 * evaluar a los individuos los cuales en sus horarios tengan 2 materias
 	 * iguales pero en ciclos diferentes por ejemplo Matematicas I 8:00 y
 	 * Matematicas I 10:00 cuando deberia de ser Matematicas I 8:00 y
-	 * Matematicas I 9:00
+	 * Matematicas I 9:00 si es que asi se desea 
 	 * 
 	 * @param G
-	 * @return generacion ya evaluada
+	 * @return generacion ya evaluada 
 	 */
 	public Generacion twoHours(Generacion G) {
 
@@ -115,7 +113,6 @@ public class Evaluacion {
 			fit = (1 / pena);
 			inv.setAptitud((inv.getAptitud() + fit)/CONSTRAINS);
 		}
-
 		return G;
 	}
 	/**
@@ -149,9 +146,12 @@ public class Evaluacion {
 				cY = +HOURPERDAY;
 			}
 		}
+		
 
 		return penalizacion;
 	}
+	
+	public void Mutacion(){}
 	/**
 	 * Recibe la subtabla y evalua que se cumplan las condiciones del 
 	 * metodo 
@@ -164,7 +164,7 @@ public class Evaluacion {
 		for (Iterator<RelacionPM> iterator = t.iterator(); iterator.hasNext();) {
 			RelacionPM r = (RelacionPM) iterator.next();
 			if(r.tempRepeat==3){
-				System.out.println(r.tempRepeat);
+			System.out.println(r.tempRepeat);
 				penalizacion=penalizacion+1;
 			}
 			if(r.tempRepeat>1){
@@ -199,29 +199,27 @@ public class Evaluacion {
 	 * @param temp
 	 * @return frecuencia
 	 */
+	@SuppressWarnings("unused")
 	private TreeSet<RelacionPM> Frec_twoHours(RelacionPM temp[]) {
-
-		TreeSet<RelacionPM> t=new TreeSet<RelacionPM>();
+		TreeSet<RelacionPM> t=null;
+		if(t==null)
+			t=new TreeSet<RelacionPM>();
+		else
+			t.clear();
 		for (int i = 0; i < temp.length; i++) {
-			
 			for (int j = 0; j < temp.length; j++) {
-			
 				if (temp[i].equals(temp[j])) {
-				
-					temp[i].tempRepeat++;
+					temp[i].tempRepeat=+1;	
 				}	
-			}
+			}		
 			t.add(temp[i]);
-			//System.out.println(t);
 		}
 	return t;
 	}
-		
-	
 	/**
 	 * Metodo para hallar la moda en un vector de enteros Utilizando la tecnica
 	 * Divide y Venceras
-	 * 
+	 * @deprecated
 	 * @param a
 	 * @param prim
 	 * @param ult
@@ -242,18 +240,17 @@ public class Evaluacion {
 		}
 		return moda;
 	}
-
 	/**
 	 * Metodo para calcular el numero de veces que se repite un elemento
 	 * Utilizado por el metodo hallarModa
-	 * 
+	 * @deprecated
 	 * @param a
 	 * @param p
 	 * @param prim
 	 * @param ult
 	 * @return
 	 */
-	public static int Frecuencia(int a[], int p, int prim, int ult) {
+	  private static int Frecuencia(int a[], int p, int prim, int ult) {
 		int i, suma;
 		if (prim > ult)
 			return 0;
